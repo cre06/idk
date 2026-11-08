@@ -110,7 +110,6 @@ label.fl{display:block;font-size:.68rem;font-weight:800;letter-spacing:.08em;tex
 .brk{display:flex;align-items:center;gap:.6rem;padding:.4rem 0;font-size:.78rem;border-bottom:1px dashed var(--border)}
 .brk:last-of-type{border-bottom:0}
 .brk .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-/* -------- HOST LAYOUT -------- */
 .setup{flex:1;display:flex;align-items:center;justify-content:center;padding:1.2rem}
 .setup-card{max-width:560px;width:100%;text-align:center;padding:2rem 1.6rem;border-radius:30px;background:var(--surface);border:1px solid var(--border);backdrop-filter:blur(16px);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:1.1rem;animation:sheetIn .5s cubic-bezier(.2,1.1,.3,1)}
 .setup-card h1{font-family:var(--font-d);font-size:2.2rem;letter-spacing:.1em;color:var(--gold);text-shadow:0 0 24px rgba(255,215,0,.4)}
@@ -136,6 +135,29 @@ label.fl{display:block;font-size:.68rem;font-weight:800;letter-spacing:.08em;tex
 .pcard .lv i.on{opacity:1;transform:scale(1.1)}
 .pcard .mini{display:flex;gap:.3rem;margin-top:.2rem}
 .pcard .mini .btn{flex:1}
+.mystery{display:flex;flex-direction:column;gap:1rem;align-items:center}
+.myst-clue{padding:1rem 1.2rem;border-radius:16px;background:var(--surface2);border:1px solid var(--border);font-size:1rem;text-align:center;max-width:760px}
+.myst-word{display:flex;flex-wrap:wrap;gap:.35rem;justify-content:center;max-width:100%}
+.myst-letter{width:clamp(26px,4.4vw,44px);height:clamp(36px,6vw,56px);border-radius:8px;display:grid;place-items:center;font-family:var(--font-d);font-size:clamp(1.1rem,3vw,1.7rem);background:linear-gradient(180deg,#1d2f52,#0f1a33);border:1px solid rgba(0,243,255,.45);color:var(--cyan);box-shadow:inset 0 -3px 0 rgba(0,0,0,.4);transition:all .35s cubic-bezier(.34,1.56,.64,1)}
+html[data-mode="light"] .myst-letter{background:linear-gradient(180deg,#dbe8ff,#b9d0ff)}
+.myst-letter.space{background:none;border:0;box-shadow:none;width:14px}
+.myst-letter.rev{background:linear-gradient(180deg,#ffd700,#ffb700);border-color:#fff2a0;color:#1a1200;text-shadow:none;animation:flipRev .5s}
+.keyboard{display:grid;grid-template-columns:repeat(7,1fr);gap:.35rem;max-width:520px;width:100%}
+.keyboard .k{position:relative;padding:.55rem 0;border-radius:10px;border:1px solid var(--border);background:var(--surface2);font-family:var(--font-d);font-size:1rem;transition:all .2s;color:var(--text)}
+.keyboard .k.used{opacity:.25;pointer-events:none}
+.keyboard .k.vowel{color:var(--magenta);border-color:rgba(255,0,85,.4)}
+.keyboard .k small{position:absolute;bottom:2px;right:4px;font-size:.55rem;font-family:var(--font-b);opacity:.75}
+.keyboard .k:disabled{opacity:.35}
+.tchip{display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .7rem;border-radius:999px;border:1px solid var(--border);background:var(--surface2);font-size:.78rem;font-weight:800;color:var(--text)}
+.tchip.sel{border-color:var(--gold);background:rgba(255,215,0,.14)}
+.tchip b{color:var(--gold);font-family:var(--font-n)}
+.tchip .avatar.sm{width:22px;height:22px;font-size:.65rem}
+.spin-result{margin:.4rem 0;padding:.5rem .8rem;border-radius:12px;text-align:center;background:rgba(255,215,0,.1);border:1px solid rgba(255,215,0,.45)}
+.spin-result.bad{background:rgba(251,113,133,.15);border-color:var(--bad);color:var(--bad)}
+.spin-result.warn{background:rgba(251,191,36,.15);border-color:var(--warn);color:var(--warn)}
+.qbox{padding:1.2rem;border-radius:18px;background:var(--surface2);border:1px solid var(--border);font-size:1.2rem;font-weight:700;text-align:center}
+.answers{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.6rem}
+.answers .btn{min-height:58px;font-size:.95rem;text-align:center;justify-content:center}
 .ring-wrap{display:flex;align-items:center;gap:1rem;justify-content:center}
 .timer{position:relative;width:110px;height:110px;flex-shrink:0}
 .timer svg{width:100%;height:100%;transform:rotate(-90deg)}
@@ -146,29 +168,9 @@ label.fl{display:block;font-size:.68rem;font-weight:800;letter-spacing:.08em;tex
 #timerDisplay{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--font-n);font-size:2.6rem;color:var(--cyan)}
 .timer.danger #timerDisplay{color:var(--bad)}
 #timerDisplay.pop{animation:numPop .3s}
-/* -------- PHASE 1: MYSTERY BOARD -------- */
-.mystery{display:flex;flex-direction:column;gap:1rem;align-items:center}
-.myst-clue{padding:1rem 1.2rem;border-radius:16px;background:var(--surface2);border:1px solid var(--border);font-size:1rem;text-align:center;max-width:760px}
-.myst-word{display:flex;flex-wrap:wrap;gap:.35rem;justify-content:center;max-width:100%}
-.myst-letter{width:clamp(26px,4.4vw,44px);height:clamp(36px,6vw,56px);border-radius:8px;display:grid;place-items:center;font-family:var(--font-d);font-size:clamp(1.1rem,3vw,1.7rem);background:linear-gradient(180deg,#1d2f52,#0f1a33);border:1px solid rgba(0,243,255,.45);color:var(--cyan);box-shadow:inset 0 -3px 0 rgba(0,0,0,.4);transition:all .35s cubic-bezier(.34,1.56,.64,1)}
-html[data-mode="light"] .myst-letter{background:linear-gradient(180deg,#dbe8ff,#b9d0ff)}
-.myst-letter.space{background:none;border:0;box-shadow:none;width:14px}
-.myst-letter.rev{background:linear-gradient(180deg,#ffd700,#ffb700);border-color:#fff2a0;color:#1a1200;text-shadow:none;animation:flipRev .5s}
-.keyboard{display:grid;grid-template-columns:repeat(7,1fr);gap:.35rem;max-width:520px;width:100%}
-.keyboard .k{padding:.55rem 0;border-radius:10px;border:1px solid var(--border);background:var(--surface2);font-family:var(--font-d);font-size:1rem;transition:all .2s}
-.keyboard .k.used{opacity:.25;pointer-events:none}
-.keyboard .k.hit{background:var(--good);color:#04251a;border-color:transparent}
-.keyboard .k.miss{background:var(--bad);color:#2a0710;border-color:transparent}
-/* -------- PHASE 2: ELIMINATION -------- */
-.qbox{padding:1.2rem;border-radius:18px;background:var(--surface2);border:1px solid var(--border);font-size:1.2rem;font-weight:700;text-align:center}
-.answers{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.6rem}
-.answers .btn{min-height:58px;font-size:.95rem;text-align:center;justify-content:center}
-.lives{display:flex;gap:.2rem}
-/* -------- PHASE 3: RISK -------- */
 .risk{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:640px;margin:0 auto}
 .risk .btn{min-height:120px;font-family:var(--font-d);font-size:1.4rem;letter-spacing:.08em;flex-direction:column;gap:.1rem}
 .risk .btn small{font-family:var(--font-b);font-size:.7rem;letter-spacing:0;opacity:.85;font-weight:700}
-/* -------- PHASE 4: FINAL -------- */
 .final-wrap{position:relative;padding:1.2rem;border-radius:22px;border:2px solid var(--magenta);background:radial-gradient(120% 100% at 50% 0%,rgba(255,0,85,.18),rgba(10,10,22,.6));animation:finalPulse 1.4s infinite alternate}
 .final-timer{font-family:var(--font-n);font-size:clamp(3.4rem,16vw,8rem);line-height:.9;text-align:center;color:var(--magenta);text-shadow:0 0 30px rgba(255,0,85,.6)}
 .final-timer.warn{color:var(--gold);text-shadow:0 0 30px rgba(255,215,0,.6)}
@@ -179,7 +181,9 @@ html[data-mode="light"] .myst-letter{background:linear-gradient(180deg,#dbe8ff,#
 .final-ans{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.6rem}
 .strikes{display:flex;justify-content:center;gap:.5rem;font-size:1.4rem}
 .strikes i{font-style:normal;opacity:.2}.strikes i.on{opacity:1;color:var(--bad)}
-/* -------- AUDIENCE -------- */
+/* WHEEL host container */
+#wheelHost{width:min(100%,430px);margin:0 auto}
+#wheelAud{width:min(100%,320px);margin:0 auto}
 .aud-main{width:100%;max-width:640px;margin:0 auto;padding:1rem .9rem 6.5rem;display:flex;flex-direction:column;gap:1rem;flex:1}
 .join{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:1.2rem;background:radial-gradient(120% 90% at 50% 0%,var(--bg2),var(--bg-c));transition:opacity .35s,transform .35s}
 .join.leaving{opacity:0;transform:scale(1.04);pointer-events:none}
@@ -214,7 +218,6 @@ html[data-mode="light"] .phone-letter{background:linear-gradient(180deg,#dbe8ff,
 .phone-letter.rev{background:linear-gradient(180deg,#ffd700,#ffb700);color:#1a1200;animation:flipRev .5s}
 .phone-life{display:flex;gap:.2rem;justify-content:center;font-size:.85rem}
 .phone-life i{font-style:normal;opacity:.2}.phone-life i.on{opacity:1}
-/* modal */
 .modal{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;padding:12px;background:rgba(5,5,12,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .modal.open{display:flex;animation:fadeIn .25s ease}
 .modal.closing{animation:fadeOut .2s ease forwards}
@@ -231,7 +234,7 @@ html[data-mode="light"] .phone-letter{background:linear-gradient(180deg,#dbe8ff,
 .fgrid{display:grid;gap:.7rem}.fgrid.c2{grid-template-columns:1fr 1fr}.fgrid.c3{grid-template-columns:1fr 2fr}
 @media (max-width:640px){.fgrid.c2,.fgrid.c3{grid-template-columns:1fr}}
 .table{width:100%;border-collapse:collapse;font-size:.88rem}
-.table th{font-size:.64px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:.5rem;text-align:center;font-size:.64rem}
+.table th{letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:.5rem;text-align:center;font-size:.64rem}
 .table td{padding:.6rem .5rem;border-top:1px solid var(--border);text-align:center}
 .table td:first-child,.table th:first-child{text-align:left;font-weight:800}
 .podium{display:flex;align-items:flex-end;justify-content:center;gap:.8rem}
@@ -245,7 +248,6 @@ html[data-mode="light"] .phone-letter{background:linear-gradient(180deg,#dbe8ff,
 .stat span{font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .qr-box{margin:0 auto;background:#fff;padding:14px;border-radius:22px;display:flex;align-items:center;justify-content:center;color:#444;font-size:.85rem;min-width:200px;min-height:200px;box-shadow:var(--shadow)}
 .qr-wrap{max-width:520px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:1.1rem;text-align:center}
-.fab{position:fixed;right:16px;bottom:16px;z-index:45;width:54px;height:54px;border-radius:50%;box-shadow:0 14px 34px -10px var(--gold);font-size:1.3rem}
 .theme-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem}
 .theme-card{position:relative;overflow:hidden;display:flex;flex-direction:column;gap:.5rem;padding:.7rem;border-radius:18px;border:2px solid var(--border);background:var(--surface);text-align:left;transition:transform .2s cubic-bezier(.3,1.5,.5,1),border-color .2s}
 .theme-card:active{transform:scale(.95)}
@@ -318,7 +320,6 @@ html[data-mode="light"] .phone-letter{background:linear-gradient(180deg,#dbe8ff,
     </div>
   </header>
 
-  <!-- SETUP -->
   <section id="setup" class="setup">
     <div class="setup-card">
       <div style="font-size:3rem">🎤</div>
@@ -337,7 +338,6 @@ html[data-mode="light"] .phone-letter{background:linear-gradient(180deg,#dbe8ff,
     </div>
   </section>
 
-  <!-- MAIN -->
   <main id="hostMain" class="host-main hidden">
     <aside class="side">
       <div class="panel">
@@ -349,11 +349,12 @@ html[data-mode="light"] .phone-letter{background:linear-gradient(180deg,#dbe8ff,
         <div class="panel-title" style="margin:0">⚙️ Impostazioni</div>
         <label class="switch"><input type="checkbox" id="optScores" onchange="setOpt('showScores',this.checked)"><span class="trk"></span><span>Mostra punteggi sui telefoni</span></label>
         <label class="switch"><input type="checkbox" id="optLives" onchange="setOpt('livesOn',this.checked)"><span class="trk"></span><span>Vite in Fase 2 (3 di default)</span></label>
+        <label class="switch"><input type="checkbox" id="optVowels" onchange="setOpt('vowelsOn',this.checked)"><span class="trk"></span><span>Vocali a pagamento (150 pt manche)</span></label>
       </div>
       <div class="panel">
         <div class="panel-title" style="margin:0">📖 Regole lampo</div>
         <ul style="padding-left:1.1rem;margin:.5rem 0 0;font-size:.78rem;color:var(--muted);display:flex;flex-direction:column;gap:.35rem">
-          <li><b>Fase 1</b>: tabellone misterioso a lettere.</li>
+          <li><b>Fase 1</b>: ruota, lettere, soluzione.</li>
           <li><b>Fase 2</b>: tutti vs tutti, 3 vite, timer 10s.</li>
           <li><b>Fase 3</b>: RISCHIA ×2 / azzera o CONGELA.</li>
           <li><b>Fase 4</b>: 60s, 10 risposte, 3 errori = pot sfumato.</li>
@@ -386,7 +387,7 @@ html[data-mode="light"] .phone-letter{background:linear-gradient(180deg,#dbe8ff,
   <header class="topbar">
     <div class="bar-in">
       <div class="bar-left"><div class="logo">📺 TV QUIZ</div><span id="audTeam" class="teamtag"></span></div>
-      <div class="bar-right"><span id="myScore" class="scorepill hidden">💰 0</span><span id="audStatus" class="pill wait"><span class="dot"></span><span>…</span></span></div>
+      <div class="bar-right"><span id="myScore" class="scorepill hidden">💰 0</span><span id="audStatus" class="pill wait"><span class="dot"></span><span>…</span></span><button class="btn btn-icon" id="audModeBtn" onclick="audToggleMode()" title="Tema chiaro/scuro">🌙</button></div>
     </div>
   </header>
 
@@ -398,6 +399,7 @@ html[data-mode="light"] .phone-letter{background:linear-gradient(180deg,#dbe8ff,
       <div class="sk"></div><div class="sk" style="width:min(240px,60vw)"></div>
     </section>
     <div id="audNow" class="stack"></div>
+    <div id="wheelAudWrap" class="hidden"><div id="wheelAud"></div></div>
     <div id="audBoard" class="hidden"></div>
     <div id="audPhase" class="hidden"></div>
     <div id="audDone" class="aud-done hidden"><div style="font-size:3rem">🎉</div><div class="t">La puntata è finita!</div></div>
@@ -405,7 +407,7 @@ html[data-mode="light"] .phone-letter{background:linear-gradient(180deg,#dbe8ff,
     <div id="audFinal" class="hidden stack" style="text-align:center"></div>
   </main>
 
-  <button class="btn btn-gold fab" onclick="openThemeModal()" title="Tema">🎨</button>
+  <button class="btn btn-gold fab" style="position:fixed;right:16px;bottom:16px;z-index:45;width:54px;height:54px;border-radius:50%;box-shadow:0 14px 34px -10px var(--gold);font-size:1.3rem" onclick="openThemeModal()" title="Tema">🎨</button>
 
   <div id="themeModal" class="modal">
     <div class="sheet w-md">
@@ -452,9 +454,586 @@ html[data-mode="light"] .phone-letter{background:linear-gradient(180deg,#dbe8ff,
 
 <div id="toast"></div>
 
+<!-- =====================================================================
+     WIDGET: FortuneWheel (integrato, identico al file originale)
+     ===================================================================== -->
+<script>
+(function (global) {
+  'use strict';
+  const SVGNS = 'http://www.w3.org/2000/svg';
+  const CX = 250, CY = 250;
+  const R = 204, R_TESTO_FINE = 193, R_TESTO_INIZIO = 62, R_PEG = 197.5, R_LAMPADA = 225;
+  let CONTATORE = 0;
+  const mod = (n, m) => ((n % m) + m) % m;
+  const clamp = (n, a, b) => Math.min(b, Math.max(a, n));
+  const randInt = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
+  const rad = (d) => (d * Math.PI) / 180;
+  const pt = (deg, r) => [CX + r * Math.sin(rad(deg)), CY - r * Math.cos(rad(deg))];
+  const f = (n) => Math.round(n * 100) / 100;
+  function el(tag, attrs, parent) {
+    const e = document.createElementNS(SVGNS, tag);
+    if (attrs) for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  const PALETTE = [
+    { g: 'cyan',    c: ['#007a8c', '#00f3ff', '#a6fbff'], t: '#031c26', s: 'rgba(255,255,255,.6)' },
+    { g: 'magenta', c: ['#6e0029', '#ff0055', '#ff86ae'], t: '#ffffff', s: 'rgba(60,0,20,.85)' },
+    { g: 'gold',    c: ['#8a6500', '#ffd700', '#fff3a0'], t: '#2c1a00', s: 'rgba(255,255,255,.65)' },
+    { g: 'dark',    c: ['#0d0422', '#3a1470', '#7040c0'], t: '#ffffff', s: 'rgba(0,0,0,.85)' }
+  ];
+  const SPECIALI = {
+    bankrupt: { g: 'dark', c: ['#000000', '#16050a', '#5a0a10'], t: '#ff4b3e', s: 'rgba(0,0,0,.95)' },
+    pass:     { g: 'gold', c: ['#8f4a00', '#ffb000', '#ffe08a'], t: '#2b1400', s: 'rgba(255,240,170,.75)' }
+  };
+  const DEFAULTS = {
+    segments: [50, 100, 150, 200, 250, 300, 500, 'BANKRUPT', 'PASSA'],
+    sound: true, onResult: null, onSpinStart: null,
+    minTurns: 5, maxTurns: 7, duration: [4200, 5800], jitter: 0.5,
+    maxBlur: 1.8, bulbs: 24, settle: true, reducedMotion: 'auto',
+    palette: null, hubLabel: 'GIRA'
+  };
+  const CSS = `
+.fw-root{position:relative;width:100%;max-width:var(--fw-max-width,640px);margin:0 auto;aspect-ratio:100/107;container-type:inline-size;isolation:isolate;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation;line-height:1;font-family:'Bebas Neue','Teko','Oswald',Impact,'Arial Narrow',sans-serif}
+.fw-halo{position:absolute;inset:0;z-index:-3;pointer-events:none;background:radial-gradient(circle at 50% 46.7%,rgba(255,215,0,.22) 0,rgba(255,0,85,.15) 36%,rgba(0,243,255,.07) 54%,transparent 72%)}
+.fw-rays{position:absolute;inset:0;z-index:-2;pointer-events:none;background:repeating-conic-gradient(from 0deg at 50% 46.7%,rgba(255,255,255,.05) 0 4deg,transparent 4deg 15deg);-webkit-mask-image:radial-gradient(circle at 50% 46.7%,#000 0,#000 34%,transparent 72%);mask-image:radial-gradient(circle at 50% 46.7%,#000 0,#000 34%,transparent 72%)}
+.fw-floor{position:absolute;left:5%;right:5%;bottom:0;height:10%;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 40%,rgba(0,0,0,.7) 0,rgba(0,0,0,.35) 40%,transparent 70%),radial-gradient(ellipse at 50% 62%,rgba(255,215,0,.28),rgba(255,0,85,.14) 50%,transparent 76%)}
+.fw-box{position:absolute;left:0;top:0;width:100%;aspect-ratio:1/1;transform-origin:50% 50%}
+.fw-layer{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;overflow:visible}
+.fw-back{filter:drop-shadow(0 1.6cqw 2.2cqw rgba(0,0,0,.65))}
+.fw-disc{position:absolute;inset:0;transform-origin:50% 50%;will-change:transform}
+.fw-lit{opacity:0;transition:opacity .05s linear}
+.fw-bulb.on .fw-lit{opacity:1}
+.fw-hl{transform-box:view-box;transform-origin:50% 50%}
+.fw-ptr{position:absolute;left:50%;top:.2%;width:9.4%;margin-left:-4.7%;transform-origin:50% 12%;overflow:visible;pointer-events:none;filter:drop-shadow(0 .5cqw .7cqw rgba(0,0,0,.55))}
+.fw-hub{position:absolute;left:50%;top:50%;width:19%;aspect-ratio:1/1;margin:-9.5% 0 0 -9.5%;padding:0;border:0;border-radius:50%;cursor:pointer;font:inherit;font-size:5.6cqw;letter-spacing:.06em;color:#3a2400;text-shadow:0 1px 0 rgba(255,255,255,.75);background:radial-gradient(circle at 34% 26%,#fffbe0 0,#ffe46b 22%,#e0a800 55%,#8a5d00 86%,#5a3b00 100%);box-shadow:inset 0 .4cqw .6cqw rgba(255,255,255,.7),inset 0 -.8cqw 1.2cqw rgba(60,30,0,.55),0 .8cqw 1.6cqw rgba(0,0,0,.6),0 0 0 .5cqw #5a3b00;transition:transform .1s ease}
+.fw-hub:active:not(:disabled){transform:scale(.95)}
+.fw-hub:focus-visible{outline:3px solid #00f3ff;outline-offset:3px}
+.fw-hub:disabled{cursor:not-allowed;filter:grayscale(.55) brightness(.72)}
+.fw-flash{position:absolute;inset:0;border-radius:50%;pointer-events:none;opacity:0;mix-blend-mode:screen;background:radial-gradient(circle,rgba(255,255,255,.95) 0,rgba(255,255,255,.35) 50%,transparent 70%)}
+.fw-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.fw-lab{font-weight:400;letter-spacing:.03em}
+`;
+  function normalizza(s) {
+    let value, label;
+    if (s && typeof s === 'object') { value = s.value; label = s.label != null ? String(s.label) : String(s.value); }
+    else { value = s; label = String(s); }
+    const up = label.trim().toUpperCase();
+    let tipo = 'value';
+    if (up === 'BANKRUPT' || up === 'BANCAROTTA') tipo = 'bankrupt';
+    else if (up === 'PASSA' || up === 'PASS') tipo = 'pass';
+    return { value, label, type: tipo };
+  }
+  class FortuneWheel {
+    constructor(container, options) {
+      if (typeof container === 'string') container = document.querySelector(container);
+      if (!(container instanceof Element)) throw new TypeError('FortuneWheel: contenitore non valido');
+      this.container = container;
+      this.opts = Object.assign({}, DEFAULTS, options || {});
+      this._uid = 'fw' + (++CONTATORE);
+      this._stato = 'idle';
+      this._angolo = 0;
+      this._anim = null; this._piano = null; this._raf = 0;
+      this._timers = new Set(); this._fx = false; this._fase = 0;
+      this._faseIdle = 0; this._ultimoChase = 0; this._ultimoTick = 0;
+      this._k = 0; this._t0 = 0; this._hlA = []; this._pa = null;
+      this._ac = null; this._master = null; this._distrutto = false;
+      this._cicloB = (ts) => this._ciclo(ts);
+      this._onHub = () => { this._audio(); this.spin(); };
+      if (!document.getElementById('fw-style')) {
+        const st = document.createElement('style'); st.id = 'fw-style'; st.textContent = CSS; document.head.appendChild(st);
+      }
+      this._costruisci();
+      if (!this.setSegments(this.opts.segments)) throw new Error('FortuneWheel: segments non valido');
+      this._avviaIdle();
+    }
+    get state() { return this._stato; }
+    get rotation() { return this._angolo; }
+    get segments() { return this._seg.map((s) => ({ value: s.value, label: s.label, type: s.type })); }
+    get elements() { return this.el; }
+    spin(o) {
+      o = o || {};
+      if (this._stato !== 'idle' || this._distrutto) return Promise.resolve(null);
+      let idx;
+      if (o.index !== undefined || o.value !== undefined) {
+        idx = this._risolvi(o);
+        if (idx < 0) { console.warn('FortuneWheel.spin: target non trovato'); return Promise.resolve(null); }
+      } else idx = randInt(0, this._seg.length - 1);
+      return this._esegui(idx, o, false);
+    }
+    animateTo(o) {
+      o = o || {};
+      if (this._stato !== 'idle' || this._distrutto) return Promise.resolve(null);
+      if (o.index === undefined && o.value === undefined) { console.warn('FortuneWheel.animateTo: serve index o value'); return Promise.resolve(null); }
+      const idx = this._risolvi(o);
+      if (idx < 0) { console.warn('FortuneWheel.animateTo: target non trovato'); return Promise.resolve(null); }
+      return this._esegui(idx, o, true);
+    }
+    setSegments(list) {
+      if (this._distrutto) return false;
+      if (this._stato !== 'idle') { console.warn('FortuneWheel.setSegments ignorato'); return false; }
+      if (!Array.isArray(list) || list.length < 3 || list.length > 24) return false;
+      this._seg = list.map(normalizza);
+      this._stili = this._assegnaStili(this._seg);
+      this._a = 360 / this._seg.length;
+      this._disegnaDisco(); this._fermaEffetti();
+      return true;
+    }
+    setSound(on) { this.opts.sound = !!on; }
+    unlockAudio() { this._audio(); }
+    destroy() {
+      if (this._distrutto) return; this._distrutto = true;
+      cancelAnimationFrame(this._raf); clearInterval(this._idle);
+      this._fermaEffetti();
+      if (this._anim) { try { this._anim.cancel(); } catch (e) {} this._anim = null; }
+      this.el.hub.removeEventListener('click', this._onHub);
+      if (this._ac) { try { this._ac.close(); } catch (e) {} this._ac = null; }
+      if (this.el.root.parentNode) this.el.root.parentNode.removeChild(this.el.root);
+    }
+    _template() {
+      const u = this._uid, n = this.opts.bulbs, lamp = [];
+      for (let i = 0; i < n; i++) {
+        const p = pt((i + 0.5) * (360 / n), R_LAMPADA);
+        lamp.push(
+          `<g class="fw-bulb" transform="translate(${f(p[0])} ${f(p[1])})">` +
+          `<circle r="6" fill="url(#${u}-boff)" stroke="rgba(0,0,0,.55)" stroke-width="1"/>` +
+          `<circle cx="-1.8" cy="-2" r="1.4" fill="#fff" opacity=".35"/>` +
+          `<g class="fw-lit"><circle r="14" fill="url(#${u}-bglow)"/><circle r="5.4" fill="url(#${u}-bon)"/>` +
+          `<circle cx="-1.6" cy="-1.8" r="1.6" fill="#fff"/></g></g>`
+        );
+      }
+      const a = pt(-76, 184), b = pt(8, 184);
+      const moon = `M${f(a[0])} ${f(a[1])}A184 184 0 0 1 ${f(b[0])} ${f(b[1])}A420 420 0 0 0 ${f(a[0])} ${f(a[1])}Z`;
+      return `
+<div class="fw-halo"></div><div class="fw-rays"></div><div class="fw-floor"></div>
+<div class="fw-box">
+  <svg class="fw-layer fw-back" viewBox="0 0 500 500" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="${u}-brass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff6c2"/><stop offset=".22" stop-color="#e8b92e"/><stop offset=".5" stop-color="#8a6406"/><stop offset=".74" stop-color="#f6d65a"/><stop offset="1" stop-color="#5e4100"/></linearGradient>
+      <linearGradient id="${u}-brass2" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff1a8"/><stop offset=".3" stop-color="#d9a21b"/><stop offset=".6" stop-color="#6e4b00"/><stop offset="1" stop-color="#e9c64c"/></linearGradient>
+      <radialGradient id="${u}-boff"><stop offset="0" stop-color="#6a4300"/><stop offset="1" stop-color="#1f1100"/></radialGradient>
+      <radialGradient id="${u}-bon"><stop offset="0" stop-color="#fff"/><stop offset=".4" stop-color="#fff0a0"/><stop offset=".85" stop-color="#ffc21a"/><stop offset="1" stop-color="#ff9500"/></radialGradient>
+      <radialGradient id="${u}-bglow"><stop offset="0" stop-color="#ffd24a" stop-opacity=".95"/><stop offset=".45" stop-color="#ffa800" stop-opacity=".45"/><stop offset="1" stop-color="#ff8000" stop-opacity="0"/></radialGradient>
+    </defs>
+    <circle cx="250" cy="250" r="238" fill="url(#${u}-brass)"/>
+    <circle cx="250" cy="250" r="231" fill="#1b0e00"/>
+    <circle cx="250" cy="250" r="219" fill="url(#${u}-brass2)"/>
+    <circle cx="250" cy="250" r="209" fill="#0b0510"/>
+    ${lamp.join('')}
+  </svg>
+  <div class="fw-disc"><svg class="fw-layer fw-discsvg" viewBox="0 0 500 500" aria-hidden="true" focusable="false"></svg></div>
+  <svg class="fw-layer fw-hlsvg" viewBox="0 0 500 500" aria-hidden="true" focusable="false">
+    <defs><filter id="${u}-hlb" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="4"/></filter></defs>
+    <g class="fw-hl" style="opacity:0"><g class="fw-hlrot">
+      <path class="fw-hlg" fill="none" stroke="#ffd700" stroke-opacity=".65" stroke-width="12" stroke-linejoin="round" filter="url(#${u}-hlb)"/>
+      <path class="fw-hlf" fill="rgba(255,236,150,.26)" stroke="#fff6c0" stroke-width="2.6" stroke-linejoin="round"/>
+    </g></g>
+  </svg>
+  <svg class="fw-layer fw-front" viewBox="0 0 500 500" aria-hidden="true" focusable="false">
+    <defs>
+      <radialGradient id="${u}-ish" cx="250" cy="250" r="204" gradientUnits="userSpaceOnUse"><stop offset=".8" stop-color="#000" stop-opacity="0"/><stop offset=".94" stop-color="#000" stop-opacity=".28"/><stop offset="1" stop-color="#000" stop-opacity=".7"/></radialGradient>
+      <radialGradient id="${u}-vig" cx="250" cy="250" r="204" gradientUnits="userSpaceOnUse"><stop offset=".5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#050020" stop-opacity=".3"/></radialGradient>
+      <radialGradient id="${u}-lux" cx="172" cy="120" r="250" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff" stop-opacity=".5"/><stop offset=".35" stop-color="#fff" stop-opacity=".14"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+      <linearGradient id="${u}-sh" x1="150" y1="50" x2="350" y2="450" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff" stop-opacity=".1"/><stop offset=".5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".3"/></linearGradient>
+      <linearGradient id="${u}-moon" x1="0" y1="0" x2=".3" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".75"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+      <linearGradient id="${u}-rim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/><stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".65"/></linearGradient>
+      <linearGradient id="${u}-brass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff6c2"/><stop offset=".25" stop-color="#e8b92e"/><stop offset=".55" stop-color="#7a5500"/><stop offset=".8" stop-color="#f6d65a"/><stop offset="1" stop-color="#5e4100"/></linearGradient>
+      <filter id="${u}-mb"><feGaussianBlur stdDeviation="1.6"/></filter>
+      <filter id="${u}-grain" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="7"/><feColorMatrix type="saturate" values="0"/><feComposite in2="SourceGraphic" operator="in"/></filter>
+    </defs>
+    <circle cx="250" cy="250" r="204" fill="url(#${u}-ish)"/>
+    <circle cx="250" cy="250" r="204" fill="url(#${u}-vig)"/>
+    <circle cx="250" cy="250" r="204" fill="url(#${u}-sh)"/>
+    <circle cx="250" cy="250" r="204" fill="url(#${u}-lux)"/>
+    <path d="${moon}" fill="url(#${u}-moon)" filter="url(#${u}-mb)"/>
+    <circle cx="250" cy="250" r="204" fill="#000" opacity=".11" filter="url(#${u}-grain)" style="mix-blend-mode:overlay"/>
+    <circle cx="250" cy="250" r="204" fill="none" stroke="url(#${u}-rim)" stroke-width="3"/>
+    <circle cx="250" cy="250" r="236" fill="none" stroke="url(#${u}-rim)" stroke-width="2.4"/>
+    <circle cx="250" cy="250" r="214" fill="none" stroke="url(#${u}-rim)" stroke-width="1.6" opacity=".8"/>
+    <circle cx="250" cy="250" r="57" fill="none" stroke="#000" stroke-opacity=".4" stroke-width="4"/>
+    <circle cx="250" cy="250" r="53" fill="none" stroke="url(#${u}-brass)" stroke-width="7"/>
+  </svg>
+  <svg class="fw-ptr" viewBox="0 0 60 80" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="${u}-pg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6b4700"/><stop offset=".3" stop-color="#ffe680"/><stop offset=".5" stop-color="#d9a21b"/><stop offset=".75" stop-color="#fff3b8"/><stop offset="1" stop-color="#7a5200"/></linearGradient>
+      <radialGradient id="${u}-pr" cx=".35" cy=".3"><stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#e6b422"/><stop offset="1" stop-color="#5e4100"/></radialGradient>
+    </defs>
+    <path d="M30 78L9 26Q3 9 18 5L42 5Q57 9 51 26Z" fill="url(#${u}-pg)" stroke="#3a2600" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M30 78L30 5L18 5Q3 9 9 26Z" fill="#fff" opacity=".16"/>
+    <path d="M20 9Q14 12 15 22" stroke="#fff" stroke-width="2" fill="none" opacity=".7" stroke-linecap="round"/>
+    <circle cx="30" cy="18" r="6" fill="url(#${u}-pr)" stroke="#3a2600" stroke-width="1"/>
+    <circle cx="28.3" cy="16.2" r="1.7" fill="#fff" opacity=".9"/>
+  </svg>
+  <button class="fw-hub" type="button" aria-label="Gira la ruota"></button>
+  <div class="fw-flash"></div>
+</div>
+<div class="fw-sr" role="status" aria-live="polite"></div>`;
+    }
+    _costruisci() {
+      const root = document.createElement('div');
+      root.className = 'fw-root';
+      root.setAttribute('role', 'group');
+      root.setAttribute('aria-label', 'Ruota della fortuna');
+      root.innerHTML = this._template();
+      this.container.appendChild(root);
+      const q = (s) => root.querySelector(s);
+      this.el = {
+        root, box: q('.fw-box'), disc: q('.fw-disc'), discSvg: q('.fw-discsvg'),
+        hl: q('.fw-hl'), hlRot: q('.fw-hlrot'), hlG: q('.fw-hlg'), hlF: q('.fw-hlf'),
+        ptr: q('.fw-ptr'), hub: q('.fw-hub'), flash: q('.fw-flash'), sr: q('.fw-sr')
+      };
+      this.el.hub.textContent = this.opts.hubLabel;
+      this.el.hub.addEventListener('click', this._onHub);
+      this._lamp = Array.from(root.querySelectorAll('.fw-bulb'));
+    }
+    _assegnaStili(seg) {
+      const pal = this.opts.palette && this.opts.palette.length ? this.opts.palette : PALETTE;
+      const N = seg.length, out = new Array(N).fill(null);
+      seg.forEach((s, i) => {
+        if (s.type === 'bankrupt') out[i] = SPECIALI.bankrupt;
+        else if (s.type === 'pass') out[i] = SPECIALI.pass;
+      });
+      let cur = 0;
+      for (let i = 0; i < N; i++) {
+        if (out[i]) continue;
+        const escl = new Set();
+        const p = out[(i - 1 + N) % N], n = out[(i + 1) % N];
+        if (p) escl.add(p.g); if (n) escl.add(n.g);
+        let pick = null;
+        for (let k = 0; k < pal.length; k++) {
+          const c = pal[(cur + k) % pal.length];
+          if (!escl.has(c.g)) { pick = c; cur = (cur + k + 1) % pal.length; break; }
+        }
+        out[i] = pick || pal[cur % pal.length];
+      }
+      return out;
+    }
+    _settoreD(i) {
+      const a = this._a, p0 = pt(i * a, R), p1 = pt((i + 1) * a, R);
+      return `M${CX} ${CY}L${f(p0[0])} ${f(p0[1])}A${R} ${R} 0 0 1 ${f(p1[0])} ${f(p1[1])}Z`;
+    }
+    _disegnaDisco() {
+      const svg = this.el.discSvg, u = this._uid, N = this._seg.length, a = this._a;
+      while (svg.firstChild) svg.removeChild(svg.firstChild);
+      this._testi = [];
+      const defs = el('defs', null, svg);
+      const grad = new Map();
+      const idGrad = (st) => {
+        const key = st.c.join('|');
+        if (!grad.has(key)) {
+          const id = u + '-sg' + grad.size; grad.set(key, id);
+          const rg = el('radialGradient', { id, cx: CX, cy: CY, r: R, gradientUnits: 'userSpaceOnUse' }, defs);
+          [[0, st.c[0]], [0.55, st.c[1]], [1, st.c[2]]].forEach((x) => el('stop', { offset: x[0], 'stop-color': x[1] }, rg));
+        }
+        return grad.get(key);
+      };
+      const pg = el('radialGradient', { id: u + '-peg', cx: '.35', cy: '.3', r: '.8' }, defs);
+      [[0, '#fff8d0'], [0.5, '#e6b422'], [1, '#5e4100']].forEach((x) => el('stop', { offset: x[0], 'stop-color': x[1] }, pg));
+      const fl = el('filter', { id: u + '-gr', x: '-30%', y: '-60%', width: '160%', height: '220%' }, defs);
+      el('feGaussianBlur', { stdDeviation: 3.2 }, fl);
+      el('circle', { cx: CX, cy: CY, r: R, fill: '#0c0610' }, svg);
+      const gSeg = el('g', null, svg);
+      this._seg.forEach((s, i) => {
+        const st = this._stili[i];
+        const g = el('g', { class: 'fw-seg', 'data-index': i }, gSeg);
+        el('path', { d: this._settoreD(i), fill: 'url(#' + idGrad(st) + ')' }, g);
+        this._etichetta(g, s, st, i, u);
+      });
+      const gSep = el('g', { 'stroke-linecap': 'round' }, svg);
+      for (let i = 0; i < N; i++) {
+        const th = i * a;
+        const p0 = pt(th, 52), p1 = pt(th, R - 1);
+        const ox = Math.cos(rad(th)) * 2.2, oy = Math.sin(rad(th)) * 2.2;
+        el('line', { x1: f(p0[0]), y1: f(p0[1]), x2: f(p1[0]), y2: f(p1[1]), stroke: '#10051f', 'stroke-width': 3.2 }, gSep);
+        el('line', { x1: f(p0[0] + ox), y1: f(p0[1] + oy), x2: f(p1[0] + ox), y2: f(p1[1] + oy), stroke: 'rgba(255,255,255,.38)', 'stroke-width': 1.2 }, gSep);
+        const pp = pt(th, R_PEG);
+        el('circle', { cx: f(pp[0]), cy: f(pp[1]), r: 4.8, fill: 'url(#' + u + '-peg)', stroke: 'rgba(0,0,0,.6)', 'stroke-width': 0.8 }, gSep);
+        el('circle', { cx: f(pp[0] - 1.3), cy: f(pp[1] - 1.5), r: 1.3, fill: '#fff', opacity: 0.8 }, gSep);
+      }
+      el('circle', { cx: CX, cy: CY, r: R - 0.5, fill: 'none', stroke: 'rgba(0,0,0,.5)', 'stroke-width': 1.5 }, svg);
+      this._adattaTesti();
+      try {
+        if (document.fonts && document.fonts.load) {
+          Promise.all([document.fonts.load('40px "Bebas Neue"'), document.fonts.load('40px "Teko"')])
+            .then(() => { if (!this._distrutto) this._adattaTesti(); }).catch(() => {});
+        }
+      } catch (e) {}
+    }
+    _etichetta(g, s, st, i, u) {
+      const a = this._a, phi = (i + 0.5) * a;
+      const txt = String(s.label).toUpperCase().slice(0, 12);
+      const n = Math.max(1, txt.length);
+      const disp = R_TESTO_FINE - R_TESTO_INIZIO;
+      let size = Math.min(s.type === 'value' ? 60 : 46, disp / (n * 0.5));
+      if (s.type === 'pass') size = Math.min(size, 40);
+      while (size > 12) {
+        const len0 = n * size * 0.46, rMid = R_TESTO_FINE - len0 / 2;
+        if (size * 0.72 <= 2 * rMid * Math.sin(rad(a / 2)) * 0.86) break;
+        size -= 1;
+      }
+      const len = n * size * 0.46;
+      const max = disp - 4 - (s.type === 'pass' ? 36 : 0);
+      const lab = el('g', { transform: `rotate(${f(phi)} ${CX} ${CY}) translate(${CX} ${f(CY - R_TESTO_FINE)}) rotate(-90)` }, g);
+      const base = { x: 0, y: 0, dy: '.35em', 'text-anchor': 'end', 'font-size': f(size), class: 'fw-lab' };
+      const els = [];
+      const mk = (attrs) => { const t = el('text', Object.assign({}, base, attrs), lab); t.textContent = txt; els.push(t); return t; };
+      if (s.type === 'bankrupt') mk({ fill: 'none', stroke: '#ff1f1f', 'stroke-width': 6, 'stroke-opacity': 0.85, filter: `url(#${u}-gr)` });
+      mk({ fill: 'rgba(0,0,0,.5)', transform: 'translate(2.4 2.4)' });
+      mk({ fill: 'none', stroke: st.s, 'stroke-width': 3, 'stroke-linejoin': 'round' });
+      mk({ fill: st.t, stroke: st.t, 'stroke-width': 0.8, 'stroke-linejoin': 'round' });
+      this._testi.push({ els, max });
+      if (s.type === 'bankrupt') {
+        const cg = el('g', { transform: `rotate(${f(phi)} ${CX} ${CY})`, fill: 'none', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, g);
+        [-1, 1].forEach((side) => {
+          const pts = [192, 174, 156, 138, 120, 104, 92].map((r, k) => {
+            const dx = side * (r * Math.sin(rad(a / 2)) * 0.6 + (k % 2 ? 5 : -4));
+            return f(CX + dx) + ',' + f(CY - r);
+          }).join(' ');
+          el('polyline', { points: pts, stroke: '#000', 'stroke-width': 3.2, 'stroke-opacity': 0.7 }, cg);
+          el('polyline', { points: pts, stroke: '#ff3b2f', 'stroke-width': 1.3, 'stroke-opacity': 0.85 }, cg);
+        });
+      }
+      if (s.type === 'pass') {
+        const rA = Math.max(R_TESTO_INIZIO + 8, R_TESTO_FINE - len - 16);
+        const ag = el('g', { transform: `rotate(${f(phi)} ${CX} ${CY}) translate(${CX} ${f(CY - rA)})`, fill: 'none', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, g);
+        [['#fff3c0', 4.8], [st.t, 2.4]].forEach((x) => el('path', { d: 'M-8 7L0 -3L8 7M-8 14L0 4L8 14', stroke: x[0], 'stroke-width': x[1] }, ag));
+      }
+    }
+    _adattaTesti() {
+      for (const t of this._testi) {
+        for (const e of t.els) { e.removeAttribute('textLength'); e.removeAttribute('lengthAdjust'); }
+        let w = 0;
+        try { w = t.els[t.els.length - 1].getComputedTextLength(); } catch (err) { w = 0; }
+        if (w > t.max) for (const e of t.els) { e.setAttribute('textLength', f(t.max)); e.setAttribute('lengthAdjust', 'spacingAndGlyphs'); }
+      }
+    }
+    _risolvi(o) {
+      if (o.index !== undefined) { const i = Number(o.index); return Number.isInteger(i) && i >= 0 && i < this._seg.length ? i : -1; }
+      const v = o.value;
+      return this._seg.findIndex((s) => s.value === v || String(s.value).toUpperCase() === String(v).toUpperCase());
+    }
+    _indiceDaAngolo(ang) { const i = Math.floor(mod(-ang, 360) / this._a + 1e-9); return clamp(i, 0, this._seg.length - 1); }
+    _ridotto() {
+      const m = this.opts.reducedMotion;
+      if (m === true) return true;
+      if (m === false) return false;
+      return !!(global.matchMedia && global.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    }
+    _costruisciPiano(start, T, D, ridotto) {
+      if (ridotto) return { start, T, D, vc: T / D, rel: (t) => T * clamp(t / D, 0, 1), finale: start + T, ridotto: true };
+      const over = this.opts.settle === false ? 0 : Math.min(3.6, this._a * 0.15);
+      const S = over > 0 ? Math.min(750, D * 0.16) : 0;
+      const M = D - S, f1 = 0.09, f2 = 0.16, f3 = 0.75, pw = 3;
+      const t1 = M * f1, t2 = M * f2, t3 = M * f3;
+      const vc = (T + over) / (t1 / 2 + t2 + t3 / pw);
+      const d1 = (vc * t1) / 2, d2 = vc * t2, d3 = (vc * t3) / pw;
+      const rel = (t) => {
+        if (t <= 0) return 0;
+        if (t < t1) { const x = t / t1; return (vc * t1 * x * x) / 2; }
+        if (t < t1 + t2) return d1 + vc * (t - t1);
+        if (t < M) { const x = (t - t1 - t2) / t3; return d1 + d2 + d3 * (1 - Math.pow(1 - x, pw)); }
+        if (over <= 0 || t >= D) return T;
+        const s = (t - M) / S;
+        return T + over * Math.exp(-6 * s * s) * Math.cos(2.5 * Math.PI * s);
+      };
+      return { start, T, D, vc, rel, finale: start + T, ridotto: false };
+    }
+    _frames(p) {
+      const n = Math.max(40, Math.min(160, Math.round(p.D / 36)));
+      const maxB = p.ridotto ? 0 : this.opts.maxBlur;
+      const fr = [];
+      for (let i = 0; i <= n; i++) {
+        const t = (p.D * i) / n;
+        const fk = { offset: i / n, transform: `rotate(${(p.start + p.rel(t)).toFixed(3)}deg)` };
+        if (maxB > 0) {
+          const v = Math.abs(p.rel(Math.min(p.D, t + 10)) - p.rel(Math.max(0, t - 10))) / 20;
+          fk.filter = `blur(${(maxB * Math.pow(Math.min(1, v / (p.vc || 1)), 1.4)).toFixed(2)}px)`;
+        }
+        fr.push(fk);
+      }
+      return fr;
+    }
+    _esegui(index, o, fisso) {
+      const a = this._a, s = this._seg[index];
+      const ridotto = this._ridotto();
+      let landing;
+      if (o.landing !== undefined) landing = clamp(Number(o.landing) || 0, -0.8, 0.8);
+      else landing = fisso ? 0 : clamp((Math.random() * 2 - 1) * this.opts.jitter, -0.8, 0.8);
+      const base = -((index + 0.5) * a + landing * (a / 2));
+      const cur = this._angolo;
+      const delta = mod(base - cur, 360);
+      const giri = ridotto ? 1 : (o.turns !== undefined ? Math.max(0, Math.floor(Number(o.turns))) : randInt(this.opts.minTurns, this.opts.maxTurns));
+      const dopt = o.duration !== undefined ? o.duration : this.opts.duration;
+      let D = Array.isArray(dopt) ? dopt[0] + Math.random() * (dopt[1] - dopt[0]) : Number(dopt);
+      D = Math.max(250, D || 5000);
+      if (ridotto) D = Math.min(D, 900);
+      if (D === 0) D = 250;
+      const T = giri * 360 + delta;
+      const piano = this._costruisciPiano(cur, T, D, ridotto);
+      piano.index = index;
+      this._piano = piano;
+      this._fermaEffetti();
+      this._stato = 'spinning';
+      this.el.hub.disabled = true;
+      this.el.root.setAttribute('aria-busy', 'true');
+      this.el.disc.style.transform = `rotate(${cur}deg)`;
+      this._k = Math.floor(-cur / a);
+      this._fase = 0; this._ultimoChase = 0;
+      const silent = !!o.silent;
+      if (!silent) {
+        const info = { index, value: s.value, label: s.label, duration: Math.round(D), turns: giri, landing, angle: mod(base, 360) };
+        this._chiama(this.opts.onSpinStart, info);
+        this.container.dispatchEvent(new CustomEvent('wheel:start', { detail: info, bubbles: true }));
+      }
+      this._audio();
+      this._anim = this.el.disc.animate(this._frames(piano), { duration: D, easing: 'linear', fill: 'forwards' });
+      this._t0 = performance.now();
+      if (!ridotto) this._raf = requestAnimationFrame(this._cicloB);
+      return new Promise((res) => {
+        this._anim.onfinish = () => this._fine(piano, res, silent);
+        this._anim.oncancel = () => res(null);
+      });
+    }
+    _chiama(fn, arg) {
+      if (typeof fn !== 'function') return;
+      try { fn(arg); } catch (err) { setTimeout(() => { throw err; }, 0); }
+    }
+    _ciclo(ts) {
+      if (this._stato !== 'spinning' || !this._piano) return;
+      const p = this._piano;
+      let t = this._anim && this._anim.currentTime != null ? Number(this._anim.currentTime) : performance.now() - this._t0;
+      t = clamp(t, 0, p.D);
+      const ang = p.start + p.rel(t);
+      const v = Math.abs(p.rel(Math.min(p.D, t + 8)) - p.rel(Math.max(0, t - 8))) / 16;
+      const k = Math.floor(-ang / this._a);
+      if (k !== this._k) { this._k = k; this._tick(); if ((v * 1000) / this._a < 16) this._flick(); }
+      const norm = p.vc > 0 ? Math.min(1, v / p.vc) : 0;
+      const intv = 55 + (1 - norm) * 120;
+      if (ts - this._ultimoChase >= intv) {
+        this._ultimoChase = ts; this._fase = (this._fase + 1) % 3;
+        const fase = this._fase;
+        this._lampade((i) => (i - fase + 3) % 3 === 0);
+      }
+      this._raf = requestAnimationFrame(this._cicloB);
+    }
+    _fine(piano, risolvi, silent) {
+      const fin = mod(piano.finale, 360);
+      this.el.disc.style.transform = `rotate(${fin}deg)`;
+      if (this._anim) { try { this._anim.cancel(); } catch (e) {} this._anim = null; }
+      cancelAnimationFrame(this._raf);
+      this._angolo = fin;
+      this._stato = 'idle';
+      this.el.hub.disabled = false;
+      this.el.root.removeAttribute('aria-busy');
+      const idx = this._indiceDaAngolo(fin);
+      const s = this._seg[idx];
+      const payload = { value: s.value, label: s.label, index: idx };
+      this.el.sr.textContent = 'Risultato: ' + s.label;
+      this._effettiStop(idx, fin, piano.ridotto);
+      this._suonoFine(s);
+      if (!silent) {
+        this._chiama(this.opts.onResult, payload);
+        this.container.dispatchEvent(new CustomEvent('wheel:result', { detail: payload, bubbles: true }));
+      }
+      risolvi(payload);
+    }
+    _lampade(fn) { const b = this._lamp; for (let i = 0; i < b.length; i++) b[i].classList.toggle('on', !!fn(i)); }
+    _avviaIdle() {
+      this._lampade((i) => i % 2 === 0);
+      this._idle = setInterval(() => {
+        if (this._stato !== 'idle' || this._fx || this._distrutto || document.hidden || this._ridotto()) return;
+        this._faseIdle ^= 1;
+        const fi = this._faseIdle;
+        this._lampade((i) => (i + fi) % 2 === 0);
+      }, 700);
+    }
+    _effettiStop(idx, fin, ridotto) {
+      this._fermaEffetti();
+      this._fx = true;
+      const d = this._settoreD(idx);
+      this.el.hlG.setAttribute('d', d);
+      this.el.hlF.setAttribute('d', d);
+      this.el.hlRot.setAttribute('transform', `rotate(${f(fin)} ${CX} ${CY})`);
+      const hl = this.el.hl;
+      const T = (fn, ms) => { const id = setTimeout(() => { this._timers.delete(id); fn(); }, ms); this._timers.add(id); };
+      if (ridotto) {
+        hl.style.opacity = '.9';
+        this._lampade(() => true);
+        T(() => { this._fx = false; this._lampade((i) => i % 2 === 0); }, 1500);
+        return;
+      }
+      this._hlA = [
+        hl.animate([{ opacity: 0 }, { opacity: 1 }, { opacity: 0.3 }, { opacity: 1 }, { opacity: 0.3 }, { opacity: 1 }, { opacity: 0.7 }], { duration: 1700, fill: 'forwards' }),
+        hl.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.04)', offset: 0.25 }, { transform: 'scale(1.015)', offset: 0.6 }, { transform: 'scale(1.035)', offset: 0.8 }, { transform: 'scale(1)' }], { duration: 1700, easing: 'ease-in-out' })
+      ];
+      this.el.flash.animate([{ opacity: 0 }, { opacity: 0.9, offset: 0.15 }, { opacity: 0 }], { duration: 280, easing: 'ease-out' });
+      this.el.box.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.022)', offset: 0.3 }, { transform: 'scale(1)' }], { duration: 700, easing: 'ease-in-out' });
+      [true, false, true, false, true, false, true].forEach((v, k) => T(() => this._lampade(() => v), k * 130));
+      T(() => { this._fx = false; this._lampade((i) => i % 2 === 0); }, 2200);
+      this._flick();
+    }
+    _fermaEffetti() {
+      this._timers.forEach((id) => clearTimeout(id)); this._timers.clear();
+      this._hlA.forEach((an) => { try { an.cancel(); } catch (e) {} }); this._hlA = [];
+      if (this.el && this.el.hl) this.el.hl.style.opacity = '0';
+      this._fx = false;
+    }
+    _flick() {
+      if (this._ridotto()) return;
+      if (this._pa) { try { this._pa.cancel(); } catch (e) {} }
+      this._pa = this.el.ptr.animate(
+        [{ transform: 'rotate(0deg)' }, { transform: 'rotate(-16deg)', offset: 0.3 }, { transform: 'rotate(0deg)' }],
+        { duration: 110, easing: 'ease-out' }
+      );
+    }
+    _audio() {
+      if (!this.opts.sound || this._distrutto) return null;
+      try {
+        if (!this._ac) {
+          const AC = global.AudioContext || global.webkitAudioContext;
+          if (!AC) return null;
+          this._ac = new AC();
+          this._master = this._ac.createGain();
+          this._master.gain.value = 0.6;
+          this._master.connect(this._ac.destination);
+        }
+        if (this._ac.state === 'suspended') { const pr = this._ac.resume(); if (pr && pr.catch) pr.catch(() => {}); }
+        return this._ac;
+      } catch (e) { return null; }
+    }
+    _nota(freq, dur, tipo, vol, ritardo, freqFine) {
+      const ac = this._audio(); if (!ac) return;
+      const t = ac.currentTime + (ritardo || 0);
+      const o = ac.createOscillator(), g = ac.createGain();
+      o.type = tipo || 'sine';
+      o.frequency.setValueAtTime(freq, t);
+      if (freqFine) o.frequency.exponentialRampToValueAtTime(freqFine, t + dur);
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(vol, t + 0.005);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+      o.connect(g); g.connect(this._master);
+      o.start(t); o.stop(t + dur + 0.02);
+    }
+    _tick() {
+      const now = performance.now();
+      if (now - this._ultimoTick < 26) return;
+      this._ultimoTick = now;
+      this._nota(1400 + Math.random() * 250, 0.022, 'square', 0.045);
+    }
+    _suonoFine(s) {
+      if (!this.opts.sound) return;
+      if (s.type === 'bankrupt') { this._nota(300, 0.55, 'sawtooth', 0.18, 0, 90); this._nota(220, 0.7, 'square', 0.1, 0.15, 60); }
+      else if (s.type === 'pass') { this._nota(440, 0.12, 'triangle', 0.15, 0); this._nota(330, 0.22, 'triangle', 0.15, 0.12); }
+      else { [523.25, 659.25, 783.99, 1046.5].forEach((fq, k) => this._nota(fq, 0.18, 'triangle', 0.16, k * 0.09)); [523.25, 659.25, 783.99].forEach((fq) => this._nota(fq, 0.55, 'triangle', 0.09, 0.36)); }
+    }
+  }
+  global.FortuneWheel = FortuneWheel;
+})(window);
+</script>
+
 <script>
 /* =====================================================================
-   1. COSTANTI & UTILITY (riusate da ERM)
+   1. COSTANTI & UTILITY
    ===================================================================== */
 const PACK_KEY='tv_pack_v1',GAME_KEY='tv_game_v1',SET_KEY='tv_settings_v1',PEER_KEY='tv_peer_id_v1';
 const DEV_KEY='tv_dev_v1',NAME_KEY='tv_name_v1',THEME_KEY='tv_theme',MODE_KEY='tv_mode';
@@ -480,7 +1059,7 @@ function setVis(el,vis,anim){
   else el.classList.add('hidden');
 }
 document.addEventListener('pointerdown',e=>{
-  const t=e.target.closest&&e.target.closest('.btn,.k,.theme-card,.key');
+  const t=e.target.closest&&e.target.closest('.btn,.k,.theme-card');
   if(!t||t.disabled)return;
   const r=t.getBoundingClientRect(),d=Math.max(r.width,r.height)*1.6,s=document.createElement('span');
   s.className='ripple';s.style.cssText=`width:${d}px;height:${d}px;left:${e.clientX-r.left-d/2}px;top:${e.clientY-r.top-d/2}px`;
@@ -506,7 +1085,7 @@ const AUD_THEMES=[
   {id:'neon',name:'Neon Tokyo',emoji:'🏮',v:{'--bg-c':'#0a0a0c','--bg2':'#1a0a2e','--accent':'#00f2ff','--gold':'#00f2ff','--cyan':'#ff00ff','--magenta':'#ff00ff','--surface-solid':'#101018','--text':'#e0fbff','--muted':'#7fd6dd'}},
   {id:'gold',name:'Gold Stage',emoji:'👑',v:{'--bg-c':'#0a0800','--bg2':'#2a1c00','--gold':'#ffd700','--cyan':'#ffb700','--magenta':'#ff8c00'}},
   {id:'magenta',name:'Hot Magenta',emoji:'💖',v:{'--bg-c':'#12000a','--bg2':'#2e0018','--gold':'#ffd700','--cyan':'#ff5c8a','--magenta':'#ff0055'}},
-  {id:'cyber',name:'Cyber Grid',emoji:'💾',v:{'--bg-c':'#000','--bg2':'#001a08','--gold':'#00ff41','--cyan':'#00ff41','--magenta':'#00ff41','--font-d':"'Share Tech Mono',monospace"}}
+  {id:'cyber',name:'Cyber Grid',emoji:'💾',v:{'--bg-c':'#000','--bg2':'#001a08','--gold':'#00ff41','--cyan':'#00ff41','--magenta':'#00ff41'}}
 ];
 let appliedVars=[];
 function applyAppearance(id,save){
@@ -519,8 +1098,14 @@ function applyAppearance(id,save){
   if(meta)meta.setAttribute('content',getComputedStyle(root).getPropertyValue('--bg-c').trim()||'#0a0a16');
   if(save)store(THEME_KEY,id);
   const mb=$('modeBtn');if(mb)mb.textContent=root.dataset.mode==='light'?'☀️':'🌙';
+  const amb=$('audModeBtn');if(amb)amb.textContent=root.dataset.mode==='light'?'☀️':'🌙';
 }
 function toggleMode(){const next=document.documentElement.dataset.mode==='light'?'dark':'light';applyAppearance(next,false);store(MODE_KEY,next)}
+function audToggleMode(){
+  const cur=load(THEME_KEY)||document.documentElement.dataset.mode;
+  const next=(cur==='light')?'dark':'light';
+  applyAppearance(next,true);store(MODE_KEY,next);
+}
 function initHostAppearance(){applyAppearance(load(MODE_KEY)==='light'?'light':'dark',false)}
 function openThemeModal(){renderThemeList();openM('themeModal')}
 function renderThemeList(){
@@ -533,7 +1118,7 @@ function renderThemeList(){
 function setTheme(id){applyAppearance(id,true);renderThemeList();toast('Tema applicato');vib(20)}
 
 /* =====================================================================
-   3. AUDIO (WebAudio, riusato da ERM)
+   3. AUDIO
    ===================================================================== */
 let audioCtx=null;
 function initAudio(){const A_=window.AudioContext||window.webkitAudioContext;if(!audioCtx&&A_)audioCtx=new A_();if(audioCtx&&audioCtx.state==='suspended')audioCtx.resume()}
@@ -542,7 +1127,6 @@ function playSound(t,p){
   if(typeof settings==='undefined'||!settings.sound)return;
   try{initAudio();if(!audioCtx)return;const n=audioCtx.currentTime;
     switch(t){
-      case 'buzz':tone(160,n,.45,'sawtooth',.3);tone(110,n+.05,.4,'square',.12);break;
       case 'correct':[523,659,784].forEach((f,i)=>tone(f,n+i*.1,.25,'sine',.2));break;
       case 'wrong':tone(180,n,.2,'square',.2);tone(110,n+.18,.28,'square',.2);break;
       case 'tick':tone(700+(p||0)*70,n,.06,'triangle',.09);break;
@@ -557,34 +1141,29 @@ function playSound(t,p){
 function toggleSound(){settings.sound=!settings.sound;store(SET_KEY,settings);$('soundBtn').textContent=settings.sound?'🔊':'🔇'}
 
 /* =====================================================================
-   4. STATO GLOBALE
+   4. STATO
    ===================================================================== */
 function newGame(){
   return {
-    players:[],            // {id,name,score,lives,out,dv}
-    phase:1,               // 1..4
-    activeId:null,         // turno (fase 1/2)
-    pot:0,                 // montepremi
-    ended:false,
-    // Fase 1
-    p1:{clue:'',word:'',revealed:{},guessed:false,solvedBy:null},
-    // Fase 2
+    players:[],phase:1,activeId:null,pot:0,ended:false,
+    p1:{boardIdx:0,clue:'',word:'',revealed:{},guessed:false,solvedBy:null,
+        manche:{},lastSpin:null,vowelCost:150},
     p2:{queue:[],idx:0,current:null,answers:[],active:null},
-    // Fase 3
     p3:{queue:[],idx:0,current:null,choice:null},
-    // Fase 4
     p4:{queue:[],idx:0,current:null,answers:[],correct:0,strikes:0,timeLeft:60,winner:null,potWon:0}
   };
 }
 let pack=load(PACK_KEY);
 let game=Object.assign(newGame(),load(GAME_KEY)||{});
-let settings=Object.assign({sound:true,showScores:false,livesOn:true,publicUrl:''},load(SET_KEY)||{});
-let cur=null, timerInt=null;
+let settings=Object.assign({sound:true,showScores:false,livesOn:true,vowelsOn:true,publicUrl:''},load(SET_KEY)||{});
+let cur=null,timerInt=null;
 
-// normalizza eventuali dati vecchi
 if(!Array.isArray(game.players))game.players=[];
 game.players.forEach(p=>{p.score=p.score||0;p.lives=(p.lives==null?3:p.lives);p.out=!!p.out});
-if(!game.p1)game.p1={clue:'',word:'',revealed:{},guessed:false,solvedBy:null};
+if(!game.p1)game.p1={};
+game.p1={boardIdx:game.p1.boardIdx||0,clue:game.p1.clue||'',word:game.p1.word||'',
+  revealed:game.p1.revealed||{},guessed:!!game.p1.guessed,solvedBy:game.p1.solvedBy||null,
+  manche:game.p1.manche||{},lastSpin:game.p1.lastSpin||null,vowelCost:game.p1.vowelCost||150};
 if(!game.p2)game.p2={queue:[],idx:0,current:null,answers:[],active:null};
 if(!game.p3)game.p3={queue:[],idx:0,current:null,choice:null};
 if(!game.p4)game.p4={queue:[],idx:0,current:null,answers:[],correct:0,strikes:0,timeLeft:60,winner:null,potWon:0};
@@ -608,14 +1187,34 @@ function renderPhaseBar(){
   const names=['1 · Tabellone','2 · Sfida','3 · Rischio','4 · Finale'];
   el.innerHTML=names.map((n,i)=>{
     const ph=i+1,cls=ph===game.phase?'on':ph<game.phase?'done':'';
-    return `<span class="ph ${cls}">${n}</span>`;
+    return `<button class="ph ${cls}" onclick="gotoPhase(${ph})" title="Vai alla fase ${ph}">${n}</button>`;
   }).join('')+`<span class="ph" style="margin-left:auto" title="Telefoni">📱 ${phoneCount()}</span>`;
+}
+function renderSettings(){
+  const a=$('optScores'),b=$('optLives'),c=$('optVowels');
+  if(a)a.checked=settings.showScores; if(b)b.checked=settings.livesOn; if(c)c.checked=settings.vowelsOn;
+}
+function gotoPhase(n){
+  if(n<1||n>4)return;
+  game.phase=n;playSound('reveal');commit();
+}
+const manchePts=id=>Math.max(0,(game.p1.manche||{})[id]||0);
+function addManche(id,pts){ if(!id)return; game.p1.manche=game.p1.manche||{}; game.p1.manche[id]=manchePts(id)+pts; }
+function p1Alive(){ return game.players.filter(p=>!p.out); }
+function nextAliveId(curId){
+  const al=p1Alive(); if(!al.length)return null;
+  const i=al.findIndex(p=>p.id===curId);
+  return al[(i+1+al.length)%al.length].id;
+}
+function currentP1Board(){
+  const arr=(pack&&pack.phase1&&Array.isArray(pack.phase1.boards))?pack.phase1.boards:[];
+  return arr[game.p1.boardIdx]||null;
 }
 function renderPlayers(){
   const list=$('playersList');if(!list)return;
   list.innerHTML=game.players.map(p=>{
     const act=p.id===game.activeId, lv=settings.livesOn?`<div class="lv">${[1,2,3].map(i=>`<i class="${i<=p.lives?'on':''}">${i<=p.lives?'❤️':'🖤'}</i>`).join('')}</div>`:'';
-    return `<div class="pcard ${act?'active':''} ${p.out?'out':''}">
+    return `<div class="pcard ${act?'active':''} ${p.out?'out':''}" data-pid="${p.id}">
       <div class="row between"><span class="nm" onclick="renamePlayer(${p.id})">${esc(p.name)}${p.dv?' <small>📱</small>':''}</span><span class="sc">${p.score}</span></div>
       ${lv}
       <div class="mini">
@@ -626,6 +1225,7 @@ function renderPlayers(){
     </div>`;
   }).join('')||'<div class="empty">Nessun giocatore</div>';
   $('potVal').textContent=game.pot;
+  renderSettings();
 }
 function renderStage(){
   const el=$('stage');if(!el||!pack)return;
@@ -633,61 +1233,171 @@ function renderStage(){
   else if(game.phase===2)el.innerHTML=stagePhase2();
   else if(game.phase===3)el.innerHTML=stagePhase3();
   else el.innerHTML=stagePhase4();
+  if(game.phase===1) mountHostWheel();
 }
-function fillAssign(){/* opzionale */}
 
-/* ---------- FASE 1: TABELLONE MISTERIOSO ---------- */
+/* --- Ruota host --- */
+let hostWheel=null;
+function mountHostWheel(){
+  const box=$('wheelHost');if(!box)return;
+  if(hostWheel){try{hostWheel.destroy()}catch{}hostWheel=null}
+  if(!window.FortuneWheel)return;
+  hostWheel=new FortuneWheel(box,{
+    segments:[50,100,150,200,250,300,500,'BANKRUPT','PASSA'],
+    sound:!!settings.sound,
+    onResult:(r)=>{
+      const pl=game.players.find(x=>x.id===game.activeId);
+      game.p1.lastSpin={by:pl?pl.name:'?',value:r.value,label:r.label,index:r.index,ts:Date.now()};
+      if(r.value==='BANKRUPT'){
+        if(game.activeId){game.p1.manche[game.activeId]=0}
+        toast('💀 BANKRUPT! Punti manche azzerati');
+      }else if(r.value==='PASSA'){
+        game.activeId=nextAliveId(game.activeId);
+        toast('↪ PASSA: turno al prossimo');
+      }
+      commit();
+    }
+  });
+}
+
+/* ---------- FASE 1 ---------- */
 function stagePhase1(){
   const p=game.p1;
-  if(!p.word){return `<div class="empty">Nessuna fase 1 configurata. Apri l'Editor → Fase 1.</div>`}
-  const letters=p.word.toUpperCase().split('').map((ch,i)=>{
+  const board=currentP1Board();
+  const total=(pack&&pack.phase1&&pack.phase1.boards||[]).length;
+  if(!p.word && board){
+    p.clue=board.clue; p.word=(board.word||'').toUpperCase(); p.revealed={}; p.guessed=false; p.solvedBy=null;
+  }
+  if(!p.word){
+    return `<div class="empty">Nessun tabellone. Apri l'Editor → Fase 1 per aggiungerne.</div>`;
+  }
+  const letters=p.word.split('').map((ch)=>{
     if(ch===' ')return `<span class="myst-letter space"></span>`;
     const rev=!!p.revealed[ch];
     return `<span class="myst-letter ${rev?'rev':''}">${rev?esc(ch):''}</span>`;
   }).join('');
+  const turnP=game.players.find(x=>x.id===game.activeId);
+  const turnSel=game.players.map(pl=>`<button class="tchip ${pl.id===game.activeId?'sel':''}" ${pl.out?'disabled':''} onclick="setActive(${pl.id})">
+    <span class="avatar sm" style="--h:${hue(pl.id)}">${esc(initial(pl.name))}</span>${esc(pl.name)} <b class="num">${manchePts(pl.id)}</b>
+  </button>`).join('');
+  const isVowel=ch=>'AEIOU'.includes(ch);
   const kb='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(ch=>{
     const used=!!p.revealed[ch];
-    return `<button class="k ${used?'used':''}" ${used?'':`onclick="guessLetter('${ch}')"`}>${ch}</button>`;
+    const vowel=isVowel(ch);
+    const cost=settings.vowelsOn&&vowel?game.p1.vowelCost:0;
+    const can=!used && (!cost || (turnP && manchePts(turnP.id)>=cost));
+    return `<button class="k ${used?'used':''} ${vowel?'vowel':''}" ${can?`onclick="guessLetter('${ch}')"`:`disabled title="${cost?'Costo vocale: '+cost:'Turno non attivo'}"`}>${ch}${cost?`<small>${cost}</small>`:''}</button>`;
   }).join('');
+  let spinHtml='';
+  if(p.lastSpin){
+    spinHtml=`<div class="spin-result ${p.lastSpin.value==='BANKRUPT'?'bad':p.lastSpin.value==='PASSA'?'warn':''}">
+      <div class="small muted">Ultimo giro · ${esc(p.lastSpin.by)}</div>
+      <div class="num" style="font-size:2rem">${esc(p.lastSpin.label)}</div>
+    </div>`;
+  }
   return `<div class="mystery">
-    <div class="chip chip-gold">FASE 1 · TABELLONE MISTERIOSO</div>
+    <div class="chip chip-gold">FASE 1 · TABELLONE ${game.p1.boardIdx+1}/${total||1}</div>
+    <div id="wheelHost"></div>
     <div class="myst-clue">${esc(p.clue)||'<span class="muted">Aggiungi un indizio nell\'Editor.</span>'}</div>
     <div class="myst-word">${letters}</div>
+    <div class="panel" style="width:100%">
+      <div class="panel-title" style="margin:0 0 .5rem">🎯 Di chi è il turno</div>
+      <div class="row wrap" style="gap:.4rem">${turnSel||'<span class="muted small">Nessun giocatore</span>'}</div>
+      <div class="row wrap" style="margin-top:.7rem;align-items:center;gap:.5rem">
+        <button class="btn btn-gold btn-lg" onclick="spinHostWheel()" ${turnP?'':'disabled'}>🎡 Gira la ruota</button>
+        ${spinHtml}
+      </div>
+    </div>
     <div class="keyboard">${kb}</div>
+    <p class="small muted" style="margin:.2rem 0">Consonanti gratis · Vocali ${settings.vowelsOn?`costano ${game.p1.vowelCost} pt manche`:'gratis'}.</p>
     <div class="row wrap center">
-      <button class="btn btn-gold btn-lg" onclick="solveP1()">🏆 Soluzione (+500)</button>
-      <button class="btn btn-lg" onclick="resetP1()">↻ Reset</button>
-      <button class="btn btn-cyan btn-lg" onclick="nextPhase()">→ Fase 2</button>
+      <button class="btn btn-gold btn-lg" onclick="openSolve()">🏆 Soluzione (+500)</button>
+      <button class="btn btn-lg" onclick="resetP1()">↻ Reset tabellone</button>
+      <button class="btn btn-cyan btn-lg" onclick="nextBoard()">→ Prossimo tabellone</button>
+      <button class="btn btn-magenta btn-lg" onclick="gotoPhase(2)">→ Fase 2</button>
     </div>
   </div>`;
 }
+function spinHostWheel(){
+  if(!game.activeId)return toast('Imposta prima un turno attivo');
+  if(!hostWheel)return toast('Ruota non pronta');
+  if(hostWheel.state!=='idle')return;
+  hostWheel.spin();
+}
+function setActive(id){game.activeId=id;commit()}
 function guessLetter(ch){
   const p=game.p1;if(!p.word)return;
-  const inWord=p.word.toUpperCase().includes(ch);
+  if(!game.activeId)return toast('Imposta prima un turno attivo');
+  if(p.revealed[ch])return;
+  const isVowel='AEIOU'.includes(ch);
+  const cost=settings.vowelsOn&&isVowel?game.p1.vowelCost:0;
+  if(cost && manchePts(game.activeId)<cost)return toast('Punti manche insufficienti per la vocale');
+  if(cost){ game.p1.manche[game.activeId]=manchePts(game.activeId)-cost; }
+  const occ=[...p.word].filter(c=>c===ch).length;
+  const spin=game.p1.lastSpin && game.p1.lastSpin.value!=='PASSA' && game.p1.lastSpin.value!=='BANKRUPT' ? game.p1.lastSpin.value : 100;
   p.revealed[ch]=true;
-  playSound(inWord?'correct':'wrong');vib(inWord?25:[60,30,60]);
-  // bonus lettera ai giocatori attivi? semplice: +50 a chi ha il turno se indovinata
-  if(inWord&&game.activeId){const pl=game.players.find(x=>x.id===game.activeId);if(pl){pl.score+=50;game.pot+=50;floatPts(game.activeId,50)}}
+  if(occ>0){
+    const gain=spin*occ;
+    addManche(game.activeId,gain);
+    playSound('correct');vib(25);
+    toast(`+${gain} (${occ}×${spin})`);
+  }else{
+    playSound('wrong');vib([60,30,60]);
+    game.activeId=nextAliveId(game.activeId);
+    toast('Lettera assente: turno al prossimo');
+  }
   commit();
 }
-function solveP1(){
-  if(!game.activeId)return toast('Imposta prima un turno attivo');
-  const pl=game.players.find(x=>x.id===game.activeId);if(!pl)return;
-  pl.score+=500;game.pot+=500;game.p1.guessed=true;game.p1.solvedBy=pl.id;
-  playSound('win');floatPts(pl.id,500);commit();toast('🏆 '+pl.name+' ha risolto!');
+function openSolve(){
+  if(!game.players.length)return toast('Nessun giocatore');
+  if(!game.activeId){
+    const names=game.players.map((p,i)=>`${i+1}. ${p.name}`).join('\n');
+    const pick=parseInt(prompt('Chi tenta la soluzione?\n'+names,'1'),10);
+    const pl=game.players[pick-1]; if(!pl)return;
+    game.activeId=pl.id;
+  }
+  solveP1();
 }
-function resetP1(){game.p1={clue:game.p1.clue,word:game.p1.word,revealed:{},guessed:false,solvedBy:null};commit()}
-function nextPhase(){game.phase=Math.min(4,game.phase+1);playSound('reveal');commit()}
-function prevPhase(){game.phase=Math.max(1,game.phase-1);commit()}
-
-/* ---------- FASE 2: TUTTI VS TUTTI ---------- */
+function solveP1(){
+  const pl=game.players.find(x=>x.id===game.activeId);
+  if(!pl)return toast('Imposta prima un turno attivo');
+  const ok=confirm(`Il giocatore ${pl.name} ha indovinato la soluzione?\n\nOK = indovinato\nAnnulla = sbagliato`);
+  if(ok){
+    const bonus=500;
+    pl.score+=bonus+manchePts(pl.id);
+    game.pot+=bonus;
+    game.p1.guessed=true;game.p1.solvedBy=pl.id;
+    playSound('win');floatPts(pl.id,bonus);
+    toast('🏆 '+pl.name+' ha risolto! Punti manche incassati.');
+  }else{
+    game.p1.manche[pl.id]=0;
+    playSound('wrong');vib([120,60,200]);
+    game.activeId=nextAliveId(pl.id);
+    toast('❌ Soluzione errata: turno perso e punti manche azzerati');
+  }
+  commit();
+}
+function resetP1(){
+  const board=currentP1Board();
+  game.p1={boardIdx:game.p1.boardIdx,clue:board?board.clue:'',word:board?(board.word||'').toUpperCase():'',
+    revealed:{},guessed:false,solvedBy:null,manche:{},lastSpin:null,vowelCost:game.p1.vowelCost||150};
+  commit();
+}
+function nextBoard(){
+  const arr=(pack&&pack.phase1&&pack.phase1.boards)||[];
+  if(!arr.length)return toast('Nessun tabellone');
+  game.p1.boardIdx=(game.p1.boardIdx+1)%arr.length;
+  resetP1();
+  toast('Tabellone '+(game.p1.boardIdx+1));
+}
+/* ---------- FASE 2 ---------- */
 function stagePhase2(){
   const p=game.p2;
   if(!game.players.some(x=>!x.out))return `<div class="empty">Nessun giocatore attivo.</div>`;
   if(!p.current){
     return `<div class="stack">
       <div class="chip chip-cyan">FASE 2 · TUTTI CONTRO TUTTI</div>
-      <p class="muted small">Avvia la raffica: a ogni giocatore viene posta una domanda a caso. Risposta corretta = +100, errore = −1 vita. Timer 10s, allo scadere = errore.</p>
+      <p class="muted small">Risposta corretta = +100, errore = −1 vita. Timer 10s.</p>
       <button class="btn btn-gold btn-lg" onclick="startP2()">⚡ Inizia raffica</button>
     </div>`;
   }
@@ -696,10 +1406,7 @@ function stagePhase2(){
     <div class="chip chip-cyan">FASE 2 · TURNO DI ${esc(t?t.name:'—')}</div>
     <div class="ring-wrap">
       <div class="timer" id="timerBox"><svg viewBox="0 0 100 100"><circle class="trk" cx="50" cy="50" r="46" stroke-width="8" fill="none"/><circle id="ring" cx="50" cy="50" r="46" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="289" stroke-dashoffset="0"/></svg><span id="timerDisplay">10</span></div>
-      <div class="stack" style="gap:.4rem">
-        <button class="btn btn-icon" id="timerBtn" onclick="toggleTimer2()">▶</button>
-        <button class="btn btn-icon" onclick="resetTimer2()">⟲</button>
-      </div>
+      <div class="stack" style="gap:.4rem"><button class="btn btn-icon" id="timerBtn" onclick="toggleTimer2()">▶</button><button class="btn btn-icon" onclick="resetTimer2()">⟲</button></div>
     </div>
     <div class="qbox">${esc(q.q)}</div>
     <div class="answers">${q.answers.map((a,i)=>`<button class="btn btn-lg" onclick="answerP2(${i})">${esc(a)}</button>`).join('')}</div>
@@ -743,17 +1450,15 @@ function nextTurnP2(){
 function toggleTimer2(){timerInt?stopTimer2():startTimer2()}
 function startTimer2(){
   stopTimer2();if(!game.p2.current)return;
-  $('timerBtn').textContent='⏸';const start=10;
+  $('timerBtn').textContent='⏸';
   let left=parseInt($('timerDisplay').textContent,10)||10;
   timerInt=setInterval(()=>{
-    left--;updateTimer2UI(left,start);playSound('tick',start-left);
+    left--;updateTimer2UI(left,10);playSound('tick',10-left);
     if(left<=0){stopTimer2();applyP2(false);toast('⏰ Tempo scaduto: errore!')}
   },1000);
 }
 function stopTimer2(){if(timerInt){clearInterval(timerInt);timerInt=null}const b=$('timerBtn');if(b)b.textContent='▶'}
-function resetTimer2(instant){
-  stopTimer2();updateTimer2UI(10,10,instant);
-}
+function resetTimer2(instant){stopTimer2();updateTimer2UI(10,10,instant)}
 function updateTimer2UI(left,start,instant){
   const ring=$('ring'),box=$('timerBox'),d=$('timerDisplay');if(!ring)return;
   if(instant){ring.style.transition='none';requestAnimationFrame(()=>ring.style.transition='')}
@@ -761,15 +1466,14 @@ function updateTimer2UI(left,start,instant){
   if(box)box.classList.toggle('danger',left<=3&&left>0);
   if(d){d.textContent=left;d.classList.remove('pop');void d.offsetWidth;d.classList.add('pop')}
 }
-
-/* ---------- FASE 3: BIVIO DEL RISCHIO ---------- */
+/* ---------- FASE 3 ---------- */
 function stagePhase3(){
   const p=game.p3, alive=game.players.filter(x=>!x.out);
   if(!alive.length)return `<div class="empty">Nessun giocatore in gioco.</div>`;
   if(!p.current){
     return `<div class="stack">
       <div class="chip chip-gold">FASE 3 · IL BIVIO DEL RISCHIO</div>
-      <p class="muted small">Ogni giocatore rimasto sceglie: RISCHIA (×2 o azzera) oppure CONGELA (sicurezza).</p>
+      <p class="muted small">RISCHIA (×2 o azzera) oppure CONGELA (sicurezza).</p>
       <button class="btn btn-gold btn-lg" onclick="startP3()">⚡ Inizia il bivio</button>
     </div>`;
   }
@@ -816,8 +1520,7 @@ function nextTurnP3(){
   if(idx+1>=alive.length){p.current=null;p.active=null;commit();toast('Fase 3 conclusa');return}
   p.active=alive[idx+1].id;nextQuestionP3();
 }
-
-/* ---------- FASE 4: COUNTDOWN FINALE ---------- */
+/* ---------- FASE 4 ---------- */
 function stagePhase4(){
   const p=game.p4;
   const finalist=game.players.filter(x=>!x.out).sort((a,b)=>b.score-a.score)[0];
@@ -922,7 +1625,7 @@ function showFinal(){
 function closeFinal(){closeM('finalModal')}
 
 /* =====================================================================
-   7. GESTIONE GIOCATORI
+   7. GIOCATORI
    ===================================================================== */
 function addPlayer(){
   if(!needPack())return;
@@ -952,8 +1655,8 @@ function floatPts(pid,amt){
 }
 function resetGame(){
   if(!confirm('Iniziare una NUOVA puntata?\nPunteggi, vite, fasi e montepremi verranno azzerati. Giocatori e pacchetto restano.'))return;
-  game=newGame();game.players=load(GAME_KEY)?.players||[];
-  game.players.forEach(p=>{p.score=0;p.lives=3;p.out=false});
+  game=newGame();
+  game.players=(load(GAME_KEY)?.players||[]).map(p=>({...p,score:0,lives:3,out:false}));
   ['finalModal'].forEach(m=>$(m).classList.remove('open','closing'));lockScroll();
   stopFinalTimer();cur=null;
   if(pack)commit();
@@ -962,7 +1665,7 @@ function resetGame(){
 /* =====================================================================
    8. EDITOR
    ===================================================================== */
-let edTab='p1',edEdit={};
+let edTab='p1';
 function openEditor(tab){if(!needPack())return;edTab=tab||edTab;renderEditor();openM('editorModal')}
 function finishEdit(){closeM('editorModal',()=>openQR())}
 function renderEditor(){
@@ -971,21 +1674,35 @@ function renderEditor(){
   $('edBody').innerHTML=edTab==='p1'?edP1Html():edTab==='p2'?edQHtml('phase2'):edTab==='p3'?edQHtml('phase3'):edTab==='p4'?edQHtml('phase4'):edJsonHtml();
 }
 function edP1Html(){
-  const p=pack.phase1||{clue:'',word:''};
-  return `<div class="fgrid c2">
-    <div><label class="fl">Indizio / definizione</label><input id="e1clue" class="inp" value="${esc(p.clue)}"></div>
-    <div><label class="fl">Parola segreta</label><input id="e1word" class="inp" value="${esc(p.word)}"></div>
-  </div>
-  <button class="btn btn-gold" onclick="edSaveP1()">💾 Salva Fase 1</button>`;
+  const boards=(pack.phase1&&pack.phase1.boards)||[];
+  return `<p class="muted small">${boards.length} tabelloni. Si giocano in sequenza; puoi aggiungerne quanti vuoi.</p>
+  <div class="stack" style="gap:.5rem">${boards.map((b,i)=>`<div class="panel" style="padding:.6rem">
+    <div class="row between"><b>#${i+1}</b><div class="row">
+      <button class="btn btn-sm" onclick="edEditB1(${i})">✏️</button>
+      <button class="btn btn-sm btn-soft-bad" onclick="edDelB1(${i})">🗑</button>
+    </div></div>
+    <div class="small" style="margin-top:.3rem"><b>${esc(b.word||'')}</b> — ${esc(b.clue||'')}</div>
+  </div>`).join('')||'<div class="empty">Nessun tabellone.</div>'}</div>
+  <button class="btn btn-gold" onclick="edAddB1()">+ Aggiungi tabellone</button>`;
 }
-function edSaveP1(){
-  pack.phase1={clue:$('e1clue').value.trim(),word:$('e1word').value.trim().toUpperCase()};
-  game.p1={clue:pack.phase1.clue,word:pack.phase1.word,revealed:{},guessed:false,solvedBy:null};
-  savePack();commit();toast('Fase 1 salvata ✓');
+function edAddB1(){
+  const clue=prompt('Indizio / definizione:');if(!clue)return;
+  const word=prompt('Parola segreta:');if(!word)return;
+  pack.phase1=pack.phase1||{};pack.phase1.boards=pack.phase1.boards||[];
+  pack.phase1.boards.push({clue:clue.trim(),word:word.trim().toUpperCase()});
+  savePack();renderEditor();
 }
+function edEditB1(i){
+  const b=pack.phase1.boards[i];
+  const clue=prompt('Indizio:',b.clue);if(clue===null)return;
+  const word=prompt('Parola segreta:',b.word);if(word===null)return;
+  pack.phase1.boards[i]={clue:clue.trim(),word:word.trim().toUpperCase()};
+  savePack();renderEditor();
+}
+function edDelB1(i){if(!confirm('Eliminare questo tabellone?'))return;pack.phase1.boards.splice(i,1);savePack();renderEditor()}
 function edQHtml(key){
   const arr=pack[key]||[];
-  return `<p class="muted small">${arr.length} domande. Formato: domanda, 4 risposte, indice corretto (0–3).</p>
+  return `<p class="muted small">${arr.length} domande.</p>
   <div class="stack" style="gap:.5rem">${arr.map((q,i)=>`<div class="panel" style="padding:.6rem">
     <div class="row between"><b>#${i+1}</b><div class="row"><button class="btn btn-sm" onclick="edEditQ('${key}',${i})">✏️</button><button class="btn btn-sm btn-soft-bad" onclick="edDelQ('${key}',${i})">🗑</button></div></div>
     <div class="small" style="margin-top:.3rem">${esc(q.q)}</div>
@@ -1010,7 +1727,7 @@ function edEditQ(key,i){
 }
 function edDelQ(key,i){if(!confirm('Eliminare questa domanda?'))return;pack[key].splice(i,1);savePack();renderEditor()}
 function edJsonHtml(){
-  return `<p class="muted small">Pacchetto completo (fasi 1-4). Si importa anche dall'esterno.</p>
+  return `<p class="muted small">Pacchetto completo.</p>
   <textarea id="jsonBox" rows="12" class="inp" style="font-family:ui-monospace,monospace;font-size:.72rem">${esc(JSON.stringify(pack,null,2))}</textarea>
   <div class="row wrap">
     <button class="btn" onclick="dlPack()">⬇️ Scarica .json</button><button class="btn" onclick="copyPack()">📋 Copia</button>
@@ -1024,18 +1741,19 @@ function copyPack(){navigator.clipboard.writeText($('jsonBox').value).then(()=>t
 function normalizePack(o){
   if(!o||typeof o!=='object')throw new Error('JSON non valido.');
   const normQ=arr=>Array.isArray(arr)?arr.filter(q=>q&&q.q&&Array.isArray(q.answers)).map(q=>({q:String(q.q),answers:q.answers.slice(0,4).map(String),correct:(q.correct>=0&&q.correct<4)?q.correct:0})):[];
-  return{
-    version:1,
-    phase1:{clue:String(o.phase1?.clue||''),word:String(o.phase1?.word||'').toUpperCase()},
-    phase2:normQ(o.phase2),phase3:normQ(o.phase3),phase4:normQ(o.phase4)
-  };
+  let boards=[];
+  if(o.phase1&&Array.isArray(o.phase1.boards)) boards=o.phase1.boards;
+  else if(o.phase1&&o.phase1.word) boards=[{clue:String(o.phase1.clue||''),word:String(o.phase1.word||'').toUpperCase()}];
+  boards=boards.filter(b=>b&&b.word).map(b=>({clue:String(b.clue||''),word:String(b.word||'').toUpperCase()}));
+  return{version:2,phase1:{boards},phase2:normQ(o.phase2),phase3:normQ(o.phase3),phase4:normQ(o.phase4)};
 }
 function applyImport(text){
   try{
     const d=normalizePack(JSON.parse(text));
     if(pack&&!confirm('Sostituire il pacchetto attuale?'))return;
     pack=d;
-    if(pack.phase1.word)game.p1={clue:pack.phase1.clue,word:pack.phase1.word,revealed:{},guessed:false,solvedBy:null};
+    const b0=(pack.phase1.boards||[])[0];
+    if(b0)game.p1={boardIdx:0,clue:b0.clue,word:b0.word,revealed:{},guessed:false,solvedBy:null,manche:{},lastSpin:null,vowelCost:150};
     savePack();saveGame();renderAll();broadcast();
     if($('editorModal').classList.contains('open'))renderEditor();
     toast('Pacchetto importato ✓');
@@ -1043,13 +1761,17 @@ function applyImport(text){
 }
 function importFile(inp){const f=inp.files[0];if(!f)return;const r=new FileReader();r.onload=()=>applyImport(String(r.result));r.onerror=()=>alert('Lettura non riuscita.');r.readAsText(f);inp.value=''}
 function createEmptyPack(){
-  pack={version:1,phase1:{clue:'',word:''},phase2:[],phase3:[],phase4:[]};
+  pack={version:2,phase1:{boards:[]},phase2:[],phase3:[],phase4:[]};
   savePack();renderAll();openEditor('p1');
 }
 function removePack(){if(!confirm('Rimuovere il pacchetto da questo dispositivo?'))return;pack=null;localStorage.removeItem(PACK_KEY);game=newGame();saveGame();closeM('editorModal');renderAll();broadcast()}
 function demoPack(){
-  return {version:1,
-    phase1:{clue:'Il linguaggio delle macchine che imparano',word:'INTELLIGENZA ARTIFICIALE'},
+  return {version:2,
+    phase1:{boards:[
+      {clue:'Il linguaggio delle macchine che imparano',word:'INTELLIGENZA ARTIFICIALE'},
+      {clue:'La capitale della moda',word:'MILANO'},
+      {clue:'Il pianeta rosso',word:'MARTE'}
+    ]},
     phase2:[
       {q:'Qual è la capitale del Giappone?',answers:['Tokyo','Pechino','Seul','Bangkok'],correct:0},
       {q:'Quanto fa 7×8?',answers:['54','56','48','64'],correct:1},
@@ -1078,12 +1800,13 @@ function startWithDemo(){
     game.players.push({id:nid(),name:n,score:0,lives:3,out:false,dv:null});
   });
   game.activeId=game.players[0].id;
-  game.p1={clue:pack.phase1.clue,word:pack.phase1.word,revealed:{},guessed:false,solvedBy:null};
+  const b=pack.phase1.boards[0];
+  game.p1={boardIdx:0,clue:b.clue,word:b.word,revealed:{},guessed:false,solvedBy:null,manche:{},lastSpin:null,vowelCost:150};
   saveGame();renderAll();commit();
 }
 
 /* =====================================================================
-   9. SINCRONIZZAZIONE LIVE (MQTT) — riusata da ERM
+   9. SINCRONIZZAZIONE LIVE (MQTT)
    ===================================================================== */
 let hostId=null,hbTimer=null,connTimer=null;
 const hostClients=[];
@@ -1095,12 +1818,21 @@ function snapshot(){
   const act=game.players.find(p=>p.id===game.activeId);
   return {t:'state',ts:Date.now(),
     phase:game.phase,pot:game.pot,ended:!!game.ended,
-    p1:game.p1.word?{clue:game.p1.clue,letters:game.p1.word.split('').map(ch=>ch===' '?{s:1}:{ch,rev:!!game.p1.revealed[ch]}),solved:!!game.p1.guessed}:null,
+    p1:game.p1.word?{
+      clue:game.p1.clue,
+      letters:game.p1.word.split('').map(ch=>ch===' '?{s:1}:{ch,rev:!!game.p1.revealed[ch]}),
+      solved:!!game.p1.guessed,
+      turn:act?act.name:null,
+      lastSpin:game.p1.lastSpin,
+      vowelCost:game.p1.vowelCost,
+      vowelsOn:!!settings.vowelsOn
+    }:null,
     p2:game.p2.current?{q:game.p2.current.q,active:act?act.name:null,answers:game.p2.current.answers}:null,
     p3:game.p3.current?{q:game.p3.current.q,active:act?act.name:null,choice:game.p3.choice}:null,
     p4:game.p4.current?{q:game.p4.current.q,active:act?act.name:null,answers:game.p4.current.answers,correct:game.p4.correct,strikes:game.p4.strikes,timeLeft:game.p4.timeLeft}:null,
     finalist:game.phase===4&&act?act.name:null,
-    players:game.players.map(p=>sp?{n:p.name,dv:p.dv||null,s:p.score,l:p.lives,o:p.out}:{n:p.name,dv:p.dv||null,l:p.lives,o:p.out})
+    manche:game.p1.manche||{},
+    players:game.players.map(p=>sp?{n:p.name,dv:p.dv||null,s:p.score,l:p.lives,o:p.out,m:manchePts(p.id)}:{n:p.name,dv:p.dv||null,l:p.lives,o:p.out,m:manchePts(p.id)})
   };
 }
 function broadcast(){
@@ -1209,16 +1941,16 @@ function shareAudUrl(){const u=audUrl();if(u&&navigator.share)navigator.share({t
 let wl=null;
 function setBanner(x){$('hostBannerTxt').textContent='📱 Tieni questa scheda in primo piano: se il browser sospende la pagina, i telefoni smettono di aggiornarsi. '+x;$('hostBanner').classList.remove('hidden')}
 async function getWakeLock(){
-  if(!('wakeLock' in navigator)){setBanner('⚠️ Il browser non può tenere lo schermo acceso da solo: disattiva lo spegnimento automatico.');return}
+  if(!('wakeLock' in navigator)){setBanner('⚠️ Il browser non può tenere lo schermo acceso da solo.');return}
   try{wl=await navigator.wakeLock.request('screen');setBanner('🔒 Schermo mantenuto acceso.');wl.addEventListener('release',()=>{wl=null})}
-  catch(e){setBanner('⚠️ Impossibile bloccare lo spegnimento dello schermo.')}
+  catch(e){setBanner('⚠️ Impossibile bloccare lo spegnimento.')}
 }
 document.addEventListener('click',()=>{if(!$('hostApp').classList.contains('hidden')&&!wl&&'wakeLock' in navigator)getWakeLock()},{passive:true});
 
 /* =====================================================================
    10. VISTA CONCORRENTI
    ===================================================================== */
-const A={base:'',dev:'',name:'',cl:[],brk:{},me:null,state:null,lastTs:0,lastLive:0,gotAny:false,auto:false,seenMe:false,confetti:false,lastScore:null,nowHtml:'',key:null,joinTimer:null};
+const A={base:'',dev:'',name:'',cl:[],me:null,state:null,lastTs:0,lastLive:0,gotAny:false,auto:false,seenMe:false,confetti:false,lastScore:null,nowHtml:'',key:null,joinTimer:null,wheel:null,wheelHostId:null,wheelLastTs:0};
 
 function audStatus(st){
   const T_={online:['ok','Live'],connecting:['wait','Connessione…'],nohost:['err','Host non trovato…'],offline:['err','Riconnessione…']};
@@ -1279,15 +2011,35 @@ function phoneFloat(delta){
   el.textContent=(delta>0?'+':'−')+Math.abs(delta);el.style.left='50%';el.style.top='28%';
   document.body.appendChild(el);setTimeout(()=>el.remove(),1400);vib(delta>0?[40,30,40]:[90]);
 }
+function ensureAudWheel(){
+  if(A.wheel)return true;
+  if(!window.FortuneWheel)return false;
+  const box=$('wheelAud');if(!box)return false;
+  A.wheel=new FortuneWheel(box,{
+    segments:[50,100,150,200,250,300,500,'BANKRUPT','PASSA'],
+    sound:false,
+    onResult:()=>{}  // i telefoni non annunciano: il risultato è già quello ricevuto
+  });
+  return true;
+}
 function renderNow(s){
   let h='';
   if(s.phase===1&&s.p1){
-    h+=`<div class="nowcard"><div class="nc-label">Fase 1 · Tabellone</div><div class="nc-cat">${esc(s.p1.clue||'—')}</div></div>`;
+    h+=`<div class="nowcard"><div class="nc-label">Fase 1 · Tabellone</div><div class="nc-cat">${esc(s.p1.clue||'—')}</div>
+      ${s.p1.turn?`<div class="turn">Tocca a: <b>${esc(s.p1.turn)}</b></div>`:''}
+    </div>`;
+    if(s.p1.lastSpin){
+      h+=`<div class="spin-result ${s.p1.lastSpin.value==='BANKRUPT'?'bad':s.p1.lastSpin.value==='PASSA'?'warn':''}">
+        <div class="small muted">Giro di ${esc(s.p1.lastSpin.by)}</div>
+        <div class="num" style="font-size:2rem">${esc(s.p1.lastSpin.label)}</div>
+      </div>`;
+    }
+    if(s.p1.vowelsOn)h+=`<p class="small muted" style="text-align:center">Vocali: ${s.p1.vowelCost} pt manche</p>`;
   }else if(s.phase===2&&s.p2){
-    h+=`<div class="nowcard"><div class="nc-label">Fase 2 · Toccа a</div><div class="nc-cat">${esc(s.p2.active||'—')}</div></div>`;
+    h+=`<div class="nowcard"><div class="nc-label">Fase 2 · Tocca a</div><div class="nc-cat">${esc(s.p2.active||'—')}</div></div>`;
     h+=`<div class="qbox">${esc(s.p2.q)}</div>`;
   }else if(s.phase===3&&s.p3){
-    h+=`<div class="nowcard"><div class="nc-label">Fase 3 · Toccа a</div><div class="nc-cat">${esc(s.p3.active||'—')}</div>${s.p3.choice?`<div class="chip chip-gold">Scelta: ${s.p3.choice==='risk'?'RISCHIA':'CONGELA'}</div>`:''}</div>`;
+    h+=`<div class="nowcard"><div class="nc-label">Fase 3 · Tocca a</div><div class="nc-cat">${esc(s.p3.active||'—')}</div>${s.p3.choice?`<div class="chip chip-gold">Scelta: ${s.p3.choice==='risk'?'RISCHIA':'CONGELA'}</div>`:''}</div>`;
   }else if(s.phase===4&&s.p4){
     h+=`<div class="alert alert-sd">🔥 FINALE · ${esc(s.p4.active||'—')}</div>`;
     h+=`<div class="final-timer ${s.p4.timeLeft<=15?'warn':''}">${s.p4.timeLeft}</div>`;
@@ -1317,10 +2069,10 @@ function audRender(s){
     if(A.lastScore!==null&&me.s!==A.lastScore)phoneFloat(me.s-A.lastScore);
     A.lastScore=me.s;
   }else{sp.classList.add('hidden');A.lastScore=null}
-  if(!me){['audNow','audBoard','audPhase','audDone','audScores','audFinal'].forEach(i=>$(i).classList.add('hidden'));return}
+  if(!me){['audNow','audBoard','audPhase','audDone','audScores','audFinal','wheelAudWrap'].forEach(i=>$(i).classList.add('hidden'));return}
   $('audNow').classList.remove('hidden');
   if(s.ended){
-    ['audBoard','audPhase','audDone','audScores'].forEach(i=>$(i).classList.add('hidden'));
+    ['audBoard','audPhase','audDone','audScores','wheelAudWrap'].forEach(i=>$(i).classList.add('hidden'));
     A.nowHtml='';$('audNow').innerHTML='';A.key=null;
     const f=$('audFinal');setVis(f,true);
     f.innerHTML=`<h2 class="display" style="font-size:1.9rem;color:var(--gold)">🏆 Classifica finale</h2>${podiumHtml((s.players||[]).map(p=>({name:p.n,score:p.s||0})))}`;
@@ -1328,9 +2080,27 @@ function audRender(s){
     return;
   }
   A.confetti=false;$('audFinal').classList.add('hidden');
+
+  // RUOTA SINCRONIZZATA
+  const wheelWrap=$('wheelAudWrap');
+  if(s.phase===1&&s.p1){
+    setVis(wheelWrap,true,false);
+    if(ensureAudWheel() && s.p1.lastSpin && s.p1.lastSpin.ts && s.p1.lastSpin.ts!==A.wheelLastTs){
+      A.wheelLastTs=s.p1.lastSpin.ts;
+      // se lo spin è "vecchio" (arrivo in ritardo), atterra senza rigirare
+      const age=Date.now()-(s.p1.lastSpin.ts||0);
+      const dur=age>8000?0:4800;
+      if(A.wheel.state==='idle'){
+        A.wheel.animateTo({index:s.p1.lastSpin.index,duration:dur});
+      }
+    }
+  }else{
+    wheelWrap.classList.add('hidden');
+  }
+
   renderNow(s);
 
-  // tabellone lettere (fase 1)
+  // tabellone lettere
   const board=$('audBoard'), wordKey=s.p1?s.p1.letters.map(l=>l.s?' ':l.ch+(l.rev?'1':'0')).join(''):'';
   if(s.phase===1&&s.p1){
     setVis(board,true,false);
@@ -1347,11 +2117,14 @@ function audRender(s){
     }
   }else{board.classList.add('hidden');A.key=null}
 
-  // vite (fase 2)
+  // vite
   const ph=$('audPhase');
   if(s.phase===2&&s.players){
     setVis(ph,true,false);
     ph.innerHTML=`<div class="panel"><div class="panel-title">Vite</div><div class="stack" style="gap:.35rem">${s.players.map(p=>`<div class="row between"><span>${esc(p.n)}</span><span class="phone-life">${[1,2,3].map(i=>`<i class="${i<=p.l?'on':''}">${i<=p.l?'❤️':'🖤'}</i>`).join('')}</span></div>`).join('')}</div></div>`;
+  }else if(s.phase===1&&s.players){
+    setVis(ph,true,false);
+    ph.innerHTML=`<div class="panel"><div class="panel-title">Punti manche</div><div class="stack" style="gap:.35rem">${s.players.map(p=>`<div class="row between"><span>${esc(p.n)}${s.p1&&s.p1.turn&&s.p1.turn===p.n?' 🎯':''}</span><b class="num" style="color:var(--gold)">${p.m||0}</b></div>`).join('')}</div></div>`;
   }else{ph.classList.add('hidden');ph.innerHTML=''}
 
   // classifica
